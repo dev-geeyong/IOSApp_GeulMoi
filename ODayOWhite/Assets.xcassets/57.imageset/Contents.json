@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "shutterstock_1479789158-640x360.jpg",
+      "filename" : "57-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -17,5 +17,9 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true,
+    "template-rendering-intent" : "original"
   }
 }

@@ -9,11 +9,12 @@ import UIKit
 import Firebase
 
 class RegisterViewController: UIViewController {
-
+    
     @IBOutlet var nickNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
+    let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
         nickNameTextField.addUnderLine()
@@ -24,20 +25,24 @@ class RegisterViewController: UIViewController {
     @IBAction func registerPressed(_ sender: UIButton) {
         if let email = emailTextField.text , let password = passwordTextField.text {
             
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-          
-            if let e = error {
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 
-                
-                print(e.localizedDescription)
-            }
-            else{
-                self.performSegue(withIdentifier: "goToMain", sender: self)
+                if let e = error {
+                    
+                    
+                    print(e.localizedDescription)
+                }
+                else{
+                    if let nickname = self.nickNameTextField.text {
+                        K.email = email
+                        K.nickName = nickname
+                    }
+                    self.performSegue(withIdentifier: "goToMain", sender: self)
+                }
             }
         }
-    }
         
-}
+    }
 }
 extension UITextField {
     

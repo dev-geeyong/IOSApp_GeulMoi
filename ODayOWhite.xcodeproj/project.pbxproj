@@ -14,6 +14,7 @@
 		469AEE9525AD9812006A446D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEE9425AD9812006A446D /* LoginViewController.swift */; };
 		469AEEAF25ADC4B9006A446D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */; };
 		469AEEC525ADCC7B006A446D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 469AEEC425ADCC7B006A446D /* IQKeyboardManagerSwift */; };
+		469AEEE025ADDBC2006A446D /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEEDF25ADDBC2006A446D /* MainTableViewController.swift */; };
 		469AEEE425ADE0CB006A446D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEEE325ADE0CB006A446D /* MainViewController.swift */; };
 		46A1139A25AD77E3001BAC80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1139925AD77E3001BAC80 /* AppDelegate.swift */; };
 		46A1139C25AD77E3001BAC80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1139B25AD77E3001BAC80 /* SceneDelegate.swift */; };
@@ -21,6 +22,11 @@
 		46A113A125AD77E3001BAC80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A1139F25AD77E3001BAC80 /* Main.storyboard */; };
 		46A113A325AD77E9001BAC80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46A113A225AD77E9001BAC80 /* Assets.xcassets */; };
 		46A113A625AD77E9001BAC80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A113A425AD77E9001BAC80 /* LaunchScreen.storyboard */; };
+		46AB71DC25AEEB5F00281C32 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB71DB25AEEB5F00281C32 /* Const.swift */; };
+		46AB71E025AF143900281C32 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AB71DF25AF143900281C32 /* Message.swift */; };
+		46B9ED9B25AE8F9F0024E6D4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9ED9A25AE8F9F0024E6D4 /* TabBarController.swift */; };
+		46B9ED9E25AE9CFB0024E6D4 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */; };
+		46DF7EB925AED553003A3D0E /* LikeViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DF7EB825AED553003A3D0E /* LikeViewViewController.swift */; };
 		48C6FBF3B5C77D1B23A21CA9 /* Pods_ODayOWhite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F175D686EA69E8DABB0EA290 /* Pods_ODayOWhite.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +39,7 @@
 		469AEE9125AD962F006A446D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		469AEE9425AD9812006A446D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		469AEEDF25ADDBC2006A446D /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		469AEEE325ADE0CB006A446D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		46A1139625AD77E3001BAC80 /* ODayOWhite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ODayOWhite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A1139925AD77E3001BAC80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +49,11 @@
 		46A113A225AD77E9001BAC80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46A113A525AD77E9001BAC80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		46A113A725AD77E9001BAC80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46AB71DB25AEEB5F00281C32 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		46AB71DF25AF143900281C32 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		46B9ED9A25AE8F9F0024E6D4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		46DF7EB825AED553003A3D0E /* LikeViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewViewController.swift; sourceTree = "<group>"; };
 		F175D686EA69E8DABB0EA290 /* Pods_ODayOWhite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODayOWhite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,7 +123,13 @@
 				46A1139D25AD77E3001BAC80 /* ViewController.swift */,
 				469AEE9725AD9837006A446D /* View */,
 				460408A225AD7E5D007C618C /* MessageCell.swift */,
+				46DF7EB825AED553003A3D0E /* LikeViewViewController.swift */,
 				469AEEE325ADE0CB006A446D /* MainViewController.swift */,
+				46B9ED9A25AE8F9F0024E6D4 /* TabBarController.swift */,
+				46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */,
+				46AB71DF25AF143900281C32 /* Message.swift */,
+				46AB71DB25AEEB5F00281C32 /* Const.swift */,
+				469AEEDF25ADDBC2006A446D /* MainTableViewController.swift */,
 				460408A325AD7E5D007C618C /* MessageCell.xib */,
 				46A113A225AD77E9001BAC80 /* Assets.xcassets */,
 				46A113A425AD77E9001BAC80 /* LaunchScreen.storyboard */,
@@ -256,9 +274,15 @@
 				469AEE9525AD9812006A446D /* LoginViewController.swift in Sources */,
 				46A1139E25AD77E3001BAC80 /* ViewController.swift in Sources */,
 				469AEEAF25ADC4B9006A446D /* RegisterViewController.swift in Sources */,
+				46B9ED9B25AE8F9F0024E6D4 /* TabBarController.swift in Sources */,
 				460408A425AD7E5D007C618C /* MessageCell.swift in Sources */,
+				46AB71DC25AEEB5F00281C32 /* Const.swift in Sources */,
+				46DF7EB925AED553003A3D0E /* LikeViewViewController.swift in Sources */,
 				46A1139A25AD77E3001BAC80 /* AppDelegate.swift in Sources */,
 				46A1139C25AD77E3001BAC80 /* SceneDelegate.swift in Sources */,
+				46AB71E025AF143900281C32 /* Message.swift in Sources */,
+				469AEEE025ADDBC2006A446D /* MainTableViewController.swift in Sources */,
+				46B9ED9E25AE9CFB0024E6D4 /* WriteViewController.swift in Sources */,
 				469AEEE425ADE0CB006A446D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

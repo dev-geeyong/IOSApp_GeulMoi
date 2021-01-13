@@ -8,4 +8,6 @@ target 'ODayOWhite' do
   # Pods for ODayOWhite
 pod 'Firebase/Auth'
  pod 'Firebase/Firestore'
+pod 'SwipeableTabBarController'
+ 
 end
