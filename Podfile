@@ -9,5 +9,9 @@ target 'ODayOWhite' do
 pod 'Firebase/Auth'
  pod 'Firebase/Firestore'
 pod 'SwipeableTabBarController'
- 
+pod 'RealmSwift'
+pod 'SwipeCellKit'
+pod 'ViewAnimator'
+pod 'YPImagePicker'
+pod 'RealmSwift'
 end

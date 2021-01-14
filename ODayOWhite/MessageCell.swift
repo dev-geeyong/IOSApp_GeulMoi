@@ -6,8 +6,8 @@
 //
 
 import UIKit
-
-class MessageCell: UITableViewCell {
+import SwipeCellKit
+class MessageCell: SwipeTableViewCell {
 
     @IBOutlet var messageTextLabel: UILabel!
     @IBOutlet var messageSenderLabel: UILabel!

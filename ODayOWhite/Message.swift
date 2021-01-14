@@ -12,6 +12,7 @@ struct Message{
     let sender: String
     let body: String
     let name: String
-    var like: Bool = true
+    var like: Bool
+    var likeNum: Int = 0
     
 }

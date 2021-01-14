@@ -301,12 +301,28 @@ PODS:
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
   - PromisesObjC (1.2.12)
+  - PryntTrimmerView (4.0.2)
+  - Realm (10.5.0):
+    - Realm/Headers (= 10.5.0)
+  - Realm/Headers (10.5.0)
+  - RealmSwift (10.5.0):
+    - Realm (= 10.5.0)
+  - SteviaLayout (4.7.3)
   - SwipeableTabBarController (3.3.0)
+  - SwipeCellKit (2.7.1)
+  - ViewAnimator (3.0.2)
+  - YPImagePicker (4.4.0):
+    - PryntTrimmerView (~> 4.0.2)
+    - SteviaLayout (~> 4.7.3)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
+  - RealmSwift
   - SwipeableTabBarController
+  - SwipeCellKit
+  - ViewAnimator
+  - YPImagePicker
 
 SPEC REPOS:
   trunk:
@@ -325,7 +341,14 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - PryntTrimmerView
+    - Realm
+    - RealmSwift
+    - SteviaLayout
     - SwipeableTabBarController
+    - SwipeCellKit
+    - ViewAnimator
+    - YPImagePicker
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -343,8 +366,15 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
+  Realm: e1c22c3d83b229afb70ebc10e1771c91e9542d12
+  RealmSwift: 6fc078d9d3fd7e58c71bfdbb694e252462f112a5
+  SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   SwipeableTabBarController: c815145a8d8f880d1a329044e5cf6e99c1c973e7
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
+  ViewAnimator: 16435576cd44fca0b0d63147d5031fd3e91d295a
+  YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 50b09304a1d0db4a63f933a069eafa2b36c7bc66
+PODFILE CHECKSUM: f27ecec5da364784a05486587847f29e7d25ae6f
 
 COCOAPODS: 1.10.0
