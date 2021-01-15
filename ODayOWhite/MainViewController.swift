@@ -14,7 +14,7 @@ import RealmSwift
 
 
 class MainViewController: UIViewController {
-
+    
     let realm = try! Realm()
     var likeArray: Results<LikeMessage>?
     
@@ -23,27 +23,27 @@ class MainViewController: UIViewController {
     let db = Firestore.firestore()
     var messages: [Message] = []
     var TF = Array(repeating: true, count: 100000)
-
-//    private let animations = [
-//        AnimationType.vector(CGVector(dx: 0, dy: 5)),
-//
-//
-//    ]
+    
+    //    private let animations = [
+    //        AnimationType.vector(CGVector(dx: 0, dy: 5)),
+    //
+    //
+    //    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         tableView.dataSource = self
         tableView.delegate = self
         
         tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        tableView.rowHeight = 80.0
+        tableView.rowHeight = 170
         
         
-       
+        
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -68,7 +68,9 @@ class MainViewController: UIViewController {
                                     [weak self] in
                                     guard let self = self else{return}
                                     self.tableView.reloadData()
-//                                    UIView.animate(views: self.tableView.visibleCells, animations: self.animations)
+                                    //                                    UIView.animate(views: self.tableView.visibleCells, animations: self.animations)
+                                    let indexPath = IndexPath(row: 0, section: 0)
+                                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                                 })
                             }
                         }
@@ -88,8 +90,11 @@ extension MainViewController: UITableViewDataSource {
         
         let message = messages[indexPath.row]
         
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         cell.delegate = self
+        cell.backgroundImageView.image = UIImage(named: message.ary[message.number])
+        
         cell.messageTextLabel.text = message.body
         cell.messageSenderLabel.text = message.name
         cell.messageCountLike.text = "\(message.likeNum)"
@@ -101,9 +106,9 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         tableView.reloadData()
-                        
+        
     }
 }
 //MARK: - swipetable
@@ -115,36 +120,53 @@ extension MainViewController: SwipeTableViewCellDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         
         switch orientation {
+        //        let activityVC = UIActivityViewController(activityItems: [self.messages[indexPath.row].body], applicationActivities: nil)
+        //        activityVC.popoverPresentationController?.sourceView = self.view
+        //        self.present(activityVC, animated: true, completion: nil)
+        case .left:
+            let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
+                action, indexPath in
+                let activityVC = UIActivityViewController(activityItems: [self.messages[indexPath.row].body], applicationActivities: nil)
+                activityVC.popoverPresentationController?.sourceView = self.view
+                self.present(activityVC, animated: true, completion: nil)
+            })
             
-        case .right, .left:
-            print("right")
+            thumbsUpAction.title = "공유하기"
+            thumbsUpAction.image = UIImage(systemName: "square.and.arrow.up")
+            thumbsUpAction.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            
+            
+            
+            return [thumbsUpAction]
+        case .right:
+            
             let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
                 self.TF[indexPath.row] = !self.TF[indexPath.row]
-                    let body = self.messages[indexPath.row].body
-                    self.db.collection("users").whereField("mesagee", isEqualTo: body).getDocuments(){(querySnapshot, err) in
-                            if let err = err {
-                                print(err)
+                let body = self.messages[indexPath.row].body
+                self.db.collection("users").whereField("mesagee", isEqualTo: body).getDocuments(){(querySnapshot, err) in
+                    if let err = err {
+                        print(err)
+                    }else{
+                        let doc = querySnapshot!.documents.first
+                        if let likenum = doc?.data()["likeNum"]{
+                            if self.TF[indexPath.row] == true{
+                                doc?.reference.updateData([
+                                    
+                                    "likeNum": likenum as! Int - 1,
+                                    
+                                ])
                             }else{
-                                let doc = querySnapshot!.documents.first
-                                if let likenum = doc?.data()["likeNum"]{
-                                    if self.TF[indexPath.row] == true{
-                                        doc?.reference.updateData([
-                                            
-                                            "likeNum": likenum as! Int - 1,
-                                            
-                                        ])
-                                    }else{
-                                        doc?.reference.updateData([
-                                            
-                                            "likeNum": likenum as! Int + 1,
-                                            
-                                        ])
-                                    }
-                                }
-   
+                                doc?.reference.updateData([
+                                    
+                                    "likeNum": likenum as! Int + 1,
+                                    
+                                ])
                             }
                         }
+                        
+                    }
+                }
             })
             
             if TF[indexPath.row]==true{
@@ -166,7 +188,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
             
             
             
-        return [thumbsUpAction]
+            return [thumbsUpAction]
             
         }
         
@@ -190,13 +212,13 @@ extension MainViewController: SwipeTableViewCellDelegate{
         }catch{
             print("save err")
         }
-//        tableView.reloadData()
+        //        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         var options = SwipeOptions()
         options.expansionStyle = .selection
-        options.transitionStyle = .drag
+       options.transitionStyle = .drag
         
         return options
     }

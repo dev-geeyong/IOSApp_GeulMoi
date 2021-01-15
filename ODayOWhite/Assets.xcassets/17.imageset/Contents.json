@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "sky-5534319_640.jpg",
+      "filename" : "tree-736877_640.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -17,5 +17,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }
