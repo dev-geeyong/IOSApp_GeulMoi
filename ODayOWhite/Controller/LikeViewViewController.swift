@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import RealmSwift
+import Firebase
 
 class LikeViewViewController: UIViewController  {
 
@@ -30,6 +31,7 @@ class LikeViewViewController: UIViewController  {
         
         
     }
+
     override func viewDidAppear(_ animated: Bool) {
         loadItem()
       
@@ -37,7 +39,7 @@ class LikeViewViewController: UIViewController  {
     
     @IBAction func touchUpLogoutButton(_ sender: UIButton) {
         
-
+        let auth = Auth.auth()
             sender.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
 
             UIView.animate(withDuration: 2.0,
@@ -50,6 +52,16 @@ class LikeViewViewController: UIViewController  {
                 },
                                        completion: { Void in()  }
             )
+        do {
+            
+            try Auth.auth().signOut()
+//            let defaults = UserDefaults.standard
+//            defaults.set(false, forKey: "isUserSignedIn")
+//            self.dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+            self.performSegue(withIdentifier: "goToLogin", sender: self)
         }
     
     

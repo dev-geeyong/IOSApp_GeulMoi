@@ -10,6 +10,8 @@
 		460408A425AD7E5D007C618C /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460408A225AD7E5D007C618C /* MessageCell.swift */; };
 		460408A525AD7E5D007C618C /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 460408A325AD7E5D007C618C /* MessageCell.xib */; };
 		460408A925AD7FB0007C618C /* MapoGoldenPier.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 460408A825AD7FB0007C618C /* MapoGoldenPier.ttf */; };
+		4614FE7E25B4796300860DF1 /* ManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4614FE7D25B4796300860DF1 /* ManagementViewController.swift */; };
+		4614FE8B25B47B5F00860DF1 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4614FE8A25B47B5F00860DF1 /* ImageLoader.swift */; };
 		469AEE9225AD962F006A446D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 469AEE9125AD962F006A446D /* GoogleService-Info.plist */; };
 		469AEE9525AD9812006A446D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEE9425AD9812006A446D /* LoginViewController.swift */; };
 		469AEEAF25ADC4B9006A446D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */; };
@@ -39,6 +41,8 @@
 		460408A225AD7E5D007C618C /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		460408A325AD7E5D007C618C /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		460408A825AD7FB0007C618C /* MapoGoldenPier.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MapoGoldenPier.ttf; sourceTree = "<group>"; };
+		4614FE7D25B4796300860DF1 /* ManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementViewController.swift; sourceTree = "<group>"; };
+		4614FE8A25B47B5F00860DF1 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = /Users/dev.geeyong/ODayOWhite/ODayOWhite/Controller/ImageLoader.swift; sourceTree = "<absolute>"; };
 		469AEE9125AD962F006A446D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		469AEE9425AD9812006A446D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -92,9 +96,40 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		4614FE8125B47A6800860DF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				46AB724A25B072C000281C32 /* LikeMessage.swift */,
+				46AB71DF25AF143900281C32 /* Message.swift */,
+				46AB71DB25AEEB5F00281C32 /* Const.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4614FE8225B47A7900860DF1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4614FE8A25B47B5F00860DF1 /* ImageLoader.swift */,
+				46A1139D25AD77E3001BAC80 /* ViewController.swift */,
+				469AEE9425AD9812006A446D /* LoginViewController.swift */,
+				46DF7EB825AED553003A3D0E /* LikeViewViewController.swift */,
+				469AEEE325ADE0CB006A446D /* MainViewController.swift */,
+				4614FE7D25B4796300860DF1 /* ManagementViewController.swift */,
+				469AEEDF25ADDBC2006A446D /* MainTableViewController.swift */,
+				469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */,
+				46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */,
+				46B9ED9A25AE8F9F0024E6D4 /* TabBarController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		469AEE9725AD9837006A446D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				46AB724D25B07C9200281C32 /* LikeMessageTableViewCell.swift */,
+				460408A225AD7E5D007C618C /* MessageCell.swift */,
+				460408A325AD7E5D007C618C /* MessageCell.xib */,
+				46AB724E25B07C9200281C32 /* LikeMessageTableViewCell.xib */,
 				46A1139F25AD77E3001BAC80 /* Main.storyboard */,
 			);
 			path = View;
@@ -123,23 +158,10 @@
 			children = (
 				460408A725AD7F4D007C618C /* Font */,
 				46A1139925AD77E3001BAC80 /* AppDelegate.swift */,
-				469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */,
-				469AEE9425AD9812006A446D /* LoginViewController.swift */,
 				46A1139B25AD77E3001BAC80 /* SceneDelegate.swift */,
-				46A1139D25AD77E3001BAC80 /* ViewController.swift */,
 				469AEE9725AD9837006A446D /* View */,
-				460408A225AD7E5D007C618C /* MessageCell.swift */,
-				460408A325AD7E5D007C618C /* MessageCell.xib */,
-				46DF7EB825AED553003A3D0E /* LikeViewViewController.swift */,
-				469AEEE325ADE0CB006A446D /* MainViewController.swift */,
-				46AB724D25B07C9200281C32 /* LikeMessageTableViewCell.swift */,
-				46AB724E25B07C9200281C32 /* LikeMessageTableViewCell.xib */,
-				46B9ED9A25AE8F9F0024E6D4 /* TabBarController.swift */,
-				46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */,
-				46AB71DF25AF143900281C32 /* Message.swift */,
-				46AB724A25B072C000281C32 /* LikeMessage.swift */,
-				46AB71DB25AEEB5F00281C32 /* Const.swift */,
-				469AEEDF25ADDBC2006A446D /* MainTableViewController.swift */,
+				4614FE8225B47A7900860DF1 /* Controller */,
+				4614FE8125B47A6800860DF1 /* Model */,
 				46A113A225AD77E9001BAC80 /* Assets.xcassets */,
 				46A113A425AD77E9001BAC80 /* LaunchScreen.storyboard */,
 				46A113A725AD77E9001BAC80 /* Info.plist */,
@@ -292,7 +314,9 @@
 				46DF7EB925AED553003A3D0E /* LikeViewViewController.swift in Sources */,
 				46A1139A25AD77E3001BAC80 /* AppDelegate.swift in Sources */,
 				46A1139C25AD77E3001BAC80 /* SceneDelegate.swift in Sources */,
+				4614FE7E25B4796300860DF1 /* ManagementViewController.swift in Sources */,
 				46AB71E025AF143900281C32 /* Message.swift in Sources */,
+				4614FE8B25B47B5F00860DF1 /* ImageLoader.swift in Sources */,
 				469AEEE025ADDBC2006A446D /* MainTableViewController.swift in Sources */,
 				46B9ED9E25AE9CFB0024E6D4 /* WriteViewController.swift in Sources */,
 				469AEEE425ADE0CB006A446D /* MainViewController.swift in Sources */,

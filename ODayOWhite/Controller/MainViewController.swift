@@ -15,6 +15,14 @@ import RealmSwift
 
 class MainViewController: UIViewController {
     
+    @IBOutlet var bestMessage: UILabel!
+    @IBOutlet var bestNickname: UILabel!
+    @IBOutlet var bestLike: UILabel!
+    
+    @IBOutlet var bestImageView: UIImageView!
+    
+    var imageLoader = ImageLoader()
+    var commonImageURL = ""
     let realm = try! Realm()
     var likeArray: Results<LikeMessage>?
     
@@ -22,7 +30,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let db = Firestore.firestore()
     var messages: [Message] = []
-    var TF = Array(repeating: true, count: 100000)
+    
     
     //    private let animations = [
     //        AnimationType.vector(CGVector(dx: 0, dy: 5)),
@@ -32,7 +40,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadBestMessage()
         //tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
@@ -48,6 +56,34 @@ class MainViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         loadMessages()
+        
+        
+        tableView.reloadData()
+    }
+    func loadBestMessage(){
+        db.collection("admin")
+            .addSnapshotListener{(querySnapshot, error) in
+                if let e = error{
+                    print(e,"loadMessages error")
+                }else{
+                    if let snapshotDocuments = querySnapshot?.documents{
+                        for doc in snapshotDocuments{
+                            let data = doc.data()
+                            self.bestMessage.text = data["message"] as? String
+                            self.bestNickname.text = data["nickname"] as? String
+                            self.bestLike.text = data["like"] as? String
+                            
+                            let url = URL(string: data["imageURL"] as! String)
+                            
+                            let urlData = try? Data(contentsOf: url!)
+                            
+                            self.bestImageView.image = UIImage(data: urlData!)
+                            
+                            self.commonImageURL = data["commonImage"] as! String
+                        }
+                    }
+                }
+            }
     }
     func loadMessages(){
         db.collection("users")
@@ -64,14 +100,12 @@ class MainViewController: UIViewController {
                                 let newMessage = Message(sender: messageEmail, body: messageBody, name: messageSender, like: true, likeNum: likeNum)
                                 self.messages.append(newMessage)
                                 
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                                    [weak self] in
-                                    guard let self = self else{return}
+                                DispatchQueue.main.async {
+                                    
                                     self.tableView.reloadData()
-                                    //                                    UIView.animate(views: self.tableView.visibleCells, animations: self.animations)
                                     let indexPath = IndexPath(row: 0, section: 0)
                                     self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                                })
+                                }
                             }
                         }
                     }
@@ -87,13 +121,18 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let message = messages[indexPath.row]
         
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         cell.delegate = self
-        cell.backgroundImageView.image = UIImage(named: message.ary[message.number])
+        imageLoader.obtainImageWithPath(imagePath: commonImageURL) { (image) in
+                
+                cell.backgroundImageView.image  = image
+                
+            }
+        
+        
         
         cell.messageTextLabel.text = message.body
         cell.messageSenderLabel.text = message.name
@@ -138,19 +177,23 @@ extension MainViewController: SwipeTableViewCellDelegate{
             
             
             return [thumbsUpAction]
+        
+            
         case .right:
             
             let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
-                self.TF[indexPath.row] = !self.TF[indexPath.row]
+                K.TF[indexPath.row] = !K.TF[indexPath.row]
                 let body = self.messages[indexPath.row].body
                 self.db.collection("users").whereField("mesagee", isEqualTo: body).getDocuments(){(querySnapshot, err) in
                     if let err = err {
                         print(err)
                     }else{
+                        
                         let doc = querySnapshot!.documents.first
+                        //doc?.reference.delete()
                         if let likenum = doc?.data()["likeNum"]{
-                            if self.TF[indexPath.row] == true{
+                            if K.TF[indexPath.row] == true{
                                 doc?.reference.updateData([
                                     
                                     "likeNum": likenum as! Int - 1,
@@ -169,7 +212,8 @@ extension MainViewController: SwipeTableViewCellDelegate{
                 }
             })
             
-            if TF[indexPath.row]==true{
+            
+            if K.TF[indexPath.row]==true{
                 thumbsUpAction.title = "좋아요"
                 thumbsUpAction.image = UIImage(systemName: "hand.thumbsup.fill")
                 thumbsUpAction.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
@@ -217,8 +261,8 @@ extension MainViewController: SwipeTableViewCellDelegate{
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         var options = SwipeOptions()
-        options.expansionStyle = .selection
-       options.transitionStyle = .drag
+        options.expansionStyle = .none
+        options.transitionStyle = .drag
         
         return options
     }

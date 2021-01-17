@@ -14,4 +14,5 @@ pod 'SwipeCellKit'
 pod 'ViewAnimator'
 pod 'YPImagePicker'
 pod 'RealmSwift'
+pod 'TweeTextField'
 end

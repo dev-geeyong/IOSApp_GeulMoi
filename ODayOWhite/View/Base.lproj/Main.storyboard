@@ -34,13 +34,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- 윤지용 -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yi-s0-9j4">
-                                                <rect key="frame" x="301.66666666666669" y="150" width="59.333333333333314" height="15.666666666666657"/>
+                                                <rect key="frame" x="301.66666666666669" y="165" width="59.333333333333314" height="15.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아무도 너의 슬픔에 관심 없대도 난 늘 응원해 수고했어 오늘도" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vj-Do-rJC">
-                                                <rect key="frame" x="20" y="102" width="335" height="41"/>
+                                                <rect key="frame" x="20" y="119" width="335" height="41"/>
                                                 <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -57,41 +57,32 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="AbX-WY-bo1">
-                                                <rect key="frame" x="320.33333333333331" y="187.66666666666666" width="40.666666666666686" height="20.333333333333343"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Irc-NL-woW">
-                                                        <rect key="frame" x="0.0" y="1.9999999999999982" width="20.666666666666668" height="17.333333333333336"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="128" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6H-Z5-qUU">
-                                                        <rect key="frame" x="21.666666666666686" y="0.0" width="19" height="20.333333333333332"/>
-                                                        <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="13"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👍🏻128" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6H-Z5-qUU">
+                                                <rect key="frame" x="321.66666666666669" y="185.66666666666666" width="39.333333333333314" height="14.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="4Yi-s0-9j4" firstAttribute="top" secondItem="7vj-Do-rJC" secondAttribute="bottom" constant="5" id="2bp-Mk-Xvv"/>
                                             <constraint firstItem="gtA-Le-zgZ" firstAttribute="leading" secondItem="VLX-By-sP6" secondAttribute="leading" constant="10" id="3QN-Fi-f3G"/>
                                             <constraint firstItem="KBR-5w-qJf" firstAttribute="leading" secondItem="VLX-By-sP6" secondAttribute="leading" constant="10" id="4j2-NN-6TS"/>
-                                            <constraint firstItem="7vj-Do-rJC" firstAttribute="centerY" secondItem="VLX-By-sP6" secondAttribute="centerY" id="5IS-V9-97x"/>
                                             <constraint firstAttribute="bottom" secondItem="4W4-fB-DuL" secondAttribute="bottom" constant="30" id="5ce-Me-FIN"/>
-                                            <constraint firstItem="AbX-WY-bo1" firstAttribute="top" secondItem="4Yi-s0-9j4" secondAttribute="bottom" constant="22" id="6Ow-b1-MYD"/>
-                                            <constraint firstAttribute="trailing" secondItem="AbX-WY-bo1" secondAttribute="trailing" constant="14" id="AJL-LM-C5j"/>
+                                            <constraint firstItem="q6H-Z5-qUU" firstAttribute="top" secondItem="4Yi-s0-9j4" secondAttribute="bottom" constant="5" id="8pH-cA-9bW"/>
                                             <constraint firstAttribute="trailing" secondItem="4W4-fB-DuL" secondAttribute="trailing" constant="10" id="BkN-Uc-145"/>
                                             <constraint firstAttribute="height" constant="245" id="DSK-QV-7H5"/>
                                             <constraint firstAttribute="bottom" secondItem="KBR-5w-qJf" secondAttribute="bottom" id="HwA-gl-4C9"/>
-                                            <constraint firstItem="4Yi-s0-9j4" firstAttribute="top" secondItem="7vj-Do-rJC" secondAttribute="bottom" constant="7" id="OIL-b0-b0H"/>
-                                            <constraint firstItem="7vj-Do-rJC" firstAttribute="centerX" secondItem="VLX-By-sP6" secondAttribute="centerX" id="UgF-gP-7TS"/>
+                                            <constraint firstItem="7vj-Do-rJC" firstAttribute="centerY" secondItem="VLX-By-sP6" secondAttribute="centerY" constant="17" id="WX0-eM-D3d"/>
+                                            <constraint firstAttribute="trailing" secondItem="q6H-Z5-qUU" secondAttribute="trailing" constant="14" id="ZJs-xE-PUO"/>
                                             <constraint firstAttribute="trailing" secondItem="4Yi-s0-9j4" secondAttribute="trailing" constant="14" id="bR2-vg-aRR"/>
                                             <constraint firstItem="4W4-fB-DuL" firstAttribute="top" secondItem="VLX-By-sP6" secondAttribute="top" constant="65" id="nwi-oa-rF6"/>
                                             <constraint firstAttribute="trailing" secondItem="7vj-Do-rJC" secondAttribute="trailing" constant="20" id="olf-sd-O4X"/>
                                             <constraint firstItem="gtA-Le-zgZ" firstAttribute="top" secondItem="VLX-By-sP6" secondAttribute="top" constant="40" id="r0J-fm-TOq"/>
                                             <constraint firstItem="4W4-fB-DuL" firstAttribute="leading" secondItem="VLX-By-sP6" secondAttribute="leading" constant="10" id="sOI-eO-CUj"/>
                                             <constraint firstItem="7vj-Do-rJC" firstAttribute="leading" secondItem="VLX-By-sP6" secondAttribute="leading" constant="20" id="zMr-Ey-LhV"/>
+                                            <constraint firstItem="7vj-Do-rJC" firstAttribute="centerX" secondItem="VLX-By-sP6" secondAttribute="centerX" id="zUi-D8-vuO"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kW5-1k-JMd">
@@ -118,6 +109,10 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="NRw-oJ-iLb"/>
                     <connections>
+                        <outlet property="bestImageView" destination="4W4-fB-DuL" id="fzD-89-Agt"/>
+                        <outlet property="bestLike" destination="q6H-Z5-qUU" id="4Vf-cZ-h9V"/>
+                        <outlet property="bestMessage" destination="7vj-Do-rJC" id="8Zb-Te-GfE"/>
+                        <outlet property="bestNickname" destination="4Yi-s0-9j4" id="idf-ci-BTR"/>
                         <outlet property="imageView" destination="4W4-fB-DuL" id="eCw-yk-cZQ"/>
                         <outlet property="tableView" destination="kW5-1k-JMd" id="ZOm-he-T1Z"/>
                     </connections>
@@ -141,7 +136,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="340"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하루한개" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bE4-P3-XZB">
-                                                <rect key="frame" x="137.66666666666666" y="100" width="100" height="140"/>
+                                                <rect key="frame" x="122.66666666666669" y="100" width="130" height="140"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="140" id="VMh-5k-Y3n"/>
                                                     <constraint firstAttribute="height" constant="140" id="z9L-bG-coD"/>
@@ -180,10 +175,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hBJ-xO-NyZ">
-                                                <rect key="frame" x="137.66666666666666" y="135" width="100" height="89"/>
+                                                <rect key="frame" x="144" y="135" width="87" height="89"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHD-Z3-CSb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="42"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="87" height="42"/>
                                                         <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="25"/>
                                                         <state key="normal" title="로그인">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -193,7 +188,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdf-M5-DNw">
-                                                        <rect key="frame" x="0.0" y="47" width="100" height="42"/>
+                                                        <rect key="frame" x="0.0" y="47" width="87" height="42"/>
                                                         <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="25"/>
                                                         <state key="normal" title="회원가입">
                                                             <color key="titleColor" systemColor="labelColor"/>
@@ -380,13 +375,13 @@
                                         <rect key="frame" x="15" y="15" width="345" height="215"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 한줄을 입력해주새요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9XJ-1c-81G">
-                                        <rect key="frame" x="15" y="112.33333333333333" width="345" height="20.666666666666671"/>
+                                        <rect key="frame" x="15" y="112.66666666666667" width="345" height="20.000000000000014"/>
                                         <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sR-KJ-SHP">
-                                        <rect key="frame" x="311" y="141" width="39" height="16"/>
+                                        <rect key="frame" x="316" y="140.66666666666666" width="34" height="16"/>
                                         <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -464,7 +459,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="245"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9mQ-OQ-duV">
-                                        <rect key="frame" x="330" y="29.999999999999996" width="35" height="44.666666666666657"/>
+                                        <rect key="frame" x="330" y="45" width="35" height="44.333333333333343"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jww-XI-ENS">
                                                 <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -474,11 +469,12 @@
                                                 </constraints>
                                                 <state key="normal" image="logout"/>
                                                 <connections>
-                                                    <action selector="touchUpLogoutButton:" destination="FMa-in-6wd" eventType="touchUpInside" id="PYm-PX-lpY"/>
+                                                    <action selector="touchUpLogoutButton:" destination="FMa-in-6wd" eventType="touchUpInside" id="A37-JO-ghG"/>
+                                                    <segue destination="e6f-pi-ZaE" kind="presentation" identifier="goToLogin" modalPresentationStyle="fullScreen" id="nnb-pz-RgB"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그아웃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z4-VS-Ly7">
-                                                <rect key="frame" x="0.0" y="35" width="35" height="9.6666666666666643"/>
+                                                <rect key="frame" x="0.0" y="35" width="35" height="9.3333333333333357"/>
                                                 <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="8"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -489,7 +485,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="9mQ-OQ-duV" secondAttribute="trailing" constant="10" id="62c-gj-9O3"/>
-                                    <constraint firstItem="9mQ-OQ-duV" firstAttribute="top" secondItem="ZKH-b3-Vai" secondAttribute="top" constant="30" id="Y3j-L0-iEN"/>
+                                    <constraint firstItem="9mQ-OQ-duV" firstAttribute="top" secondItem="ZKH-b3-Vai" secondAttribute="top" constant="45" id="Y3j-L0-iEN"/>
                                     <constraint firstAttribute="height" constant="245" id="b8U-TO-XhX"/>
                                 </constraints>
                             </view>
@@ -527,7 +523,6 @@
         <image name="58view" width="29" height="29"/>
         <image name="chat (1)" width="32" height="32"/>
         <image name="heart" width="32" height="32"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="logout" width="512" height="512"/>
         <image name="plus" width="35" height="35"/>
         <systemColor name="labelColor">
