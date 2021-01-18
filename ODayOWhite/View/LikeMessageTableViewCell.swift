@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class LikeMessageTableViewCell: UITableViewCell {
+class LikeMessageTableViewCell: SwipeTableViewCell {
 
     @IBOutlet var likeMessageNickname: UILabel!
     @IBOutlet var likeMessage: UILabel!

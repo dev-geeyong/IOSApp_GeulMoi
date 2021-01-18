@@ -38,7 +38,7 @@ class WriteViewController: UIViewController {
         
         
     }
-    
+    //글쓰기버튼
     @IBAction func pressButton(_ sender: UIButton) {
         
         

@@ -10,13 +10,13 @@
 		460408A425AD7E5D007C618C /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460408A225AD7E5D007C618C /* MessageCell.swift */; };
 		460408A525AD7E5D007C618C /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 460408A325AD7E5D007C618C /* MessageCell.xib */; };
 		460408A925AD7FB0007C618C /* MapoGoldenPier.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 460408A825AD7FB0007C618C /* MapoGoldenPier.ttf */; };
+		460B69F225B58440008EEE77 /* ShowSaveDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */; };
 		4614FE7E25B4796300860DF1 /* ManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4614FE7D25B4796300860DF1 /* ManagementViewController.swift */; };
 		4614FE8B25B47B5F00860DF1 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4614FE8A25B47B5F00860DF1 /* ImageLoader.swift */; };
 		469AEE9225AD962F006A446D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 469AEE9125AD962F006A446D /* GoogleService-Info.plist */; };
 		469AEE9525AD9812006A446D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEE9425AD9812006A446D /* LoginViewController.swift */; };
 		469AEEAF25ADC4B9006A446D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */; };
 		469AEEC525ADCC7B006A446D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 469AEEC425ADCC7B006A446D /* IQKeyboardManagerSwift */; };
-		469AEEE025ADDBC2006A446D /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEEDF25ADDBC2006A446D /* MainTableViewController.swift */; };
 		469AEEE425ADE0CB006A446D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEEE325ADE0CB006A446D /* MainViewController.swift */; };
 		46A1139A25AD77E3001BAC80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1139925AD77E3001BAC80 /* AppDelegate.swift */; };
 		46A1139C25AD77E3001BAC80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1139B25AD77E3001BAC80 /* SceneDelegate.swift */; };
@@ -31,7 +31,7 @@
 		46AB725025B07C9200281C32 /* LikeMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46AB724E25B07C9200281C32 /* LikeMessageTableViewCell.xib */; };
 		46B9ED9B25AE8F9F0024E6D4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9ED9A25AE8F9F0024E6D4 /* TabBarController.swift */; };
 		46B9ED9E25AE9CFB0024E6D4 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */; };
-		46DF7EB925AED553003A3D0E /* LikeViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DF7EB825AED553003A3D0E /* LikeViewViewController.swift */; };
+		46DF7EB925AED553003A3D0E /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DF7EB825AED553003A3D0E /* PersonalInfoViewController.swift */; };
 		48C6FBF3B5C77D1B23A21CA9 /* Pods_ODayOWhite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F175D686EA69E8DABB0EA290 /* Pods_ODayOWhite.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,12 +41,12 @@
 		460408A225AD7E5D007C618C /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		460408A325AD7E5D007C618C /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		460408A825AD7FB0007C618C /* MapoGoldenPier.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MapoGoldenPier.ttf; sourceTree = "<group>"; };
+		460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSaveDataViewController.swift; sourceTree = "<group>"; };
 		4614FE7D25B4796300860DF1 /* ManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementViewController.swift; sourceTree = "<group>"; };
 		4614FE8A25B47B5F00860DF1 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = /Users/dev.geeyong/ODayOWhite/ODayOWhite/Controller/ImageLoader.swift; sourceTree = "<absolute>"; };
 		469AEE9125AD962F006A446D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		469AEE9425AD9812006A446D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		469AEEDF25ADDBC2006A446D /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		469AEEE325ADE0CB006A446D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		46A1139625AD77E3001BAC80 /* ODayOWhite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ODayOWhite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46A1139925AD77E3001BAC80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		46AB724E25B07C9200281C32 /* LikeMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeMessageTableViewCell.xib; sourceTree = "<group>"; };
 		46B9ED9A25AE8F9F0024E6D4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
-		46DF7EB825AED553003A3D0E /* LikeViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewViewController.swift; sourceTree = "<group>"; };
+		46DF7EB825AED553003A3D0E /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		F175D686EA69E8DABB0EA290 /* Pods_ODayOWhite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODayOWhite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -112,11 +112,11 @@
 				4614FE8A25B47B5F00860DF1 /* ImageLoader.swift */,
 				46A1139D25AD77E3001BAC80 /* ViewController.swift */,
 				469AEE9425AD9812006A446D /* LoginViewController.swift */,
-				46DF7EB825AED553003A3D0E /* LikeViewViewController.swift */,
+				46DF7EB825AED553003A3D0E /* PersonalInfoViewController.swift */,
 				469AEEE325ADE0CB006A446D /* MainViewController.swift */,
 				4614FE7D25B4796300860DF1 /* ManagementViewController.swift */,
-				469AEEDF25ADDBC2006A446D /* MainTableViewController.swift */,
 				469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */,
+				460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */,
 				46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */,
 				46B9ED9A25AE8F9F0024E6D4 /* TabBarController.swift */,
 			);
@@ -311,13 +311,13 @@
 				46B9ED9B25AE8F9F0024E6D4 /* TabBarController.swift in Sources */,
 				460408A425AD7E5D007C618C /* MessageCell.swift in Sources */,
 				46AB71DC25AEEB5F00281C32 /* Const.swift in Sources */,
-				46DF7EB925AED553003A3D0E /* LikeViewViewController.swift in Sources */,
+				46DF7EB925AED553003A3D0E /* PersonalInfoViewController.swift in Sources */,
 				46A1139A25AD77E3001BAC80 /* AppDelegate.swift in Sources */,
 				46A1139C25AD77E3001BAC80 /* SceneDelegate.swift in Sources */,
 				4614FE7E25B4796300860DF1 /* ManagementViewController.swift in Sources */,
 				46AB71E025AF143900281C32 /* Message.swift in Sources */,
 				4614FE8B25B47B5F00860DF1 /* ImageLoader.swift in Sources */,
-				469AEEE025ADDBC2006A446D /* MainTableViewController.swift in Sources */,
+				460B69F225B58440008EEE77 /* ShowSaveDataViewController.swift in Sources */,
 				46B9ED9E25AE9CFB0024E6D4 /* WriteViewController.swift in Sources */,
 				469AEEE425ADE0CB006A446D /* MainViewController.swift in Sources */,
 			);

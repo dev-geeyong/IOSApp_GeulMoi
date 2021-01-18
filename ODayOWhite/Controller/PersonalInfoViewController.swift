@@ -13,12 +13,47 @@ import RealmSwift
 class PersonalInfoViewController: UIViewController  {
 
     @IBOutlet var tableView: UITableView!
-    let realm = try! Realm()
-    var likeArray: Results<LikeMessage>?
+    @IBOutlet var curruntEmail: UILabel!
+    @IBOutlet var curruntNickname: UILabel!
+    
+    
     let db = Firestore.firestore()
     var ary:Array<String> = []
     
     override func viewDidLoad() {
+        if let currentEmail = Auth.auth().currentUser?.email{
+            curruntEmail.text = currentEmail
+            
+            DispatchQueue.main.async {
+            if let currentEmail = Auth.auth().currentUser?.email{
+                self.db.collection("usersData")
+                    .whereField("email", isEqualTo: currentEmail)
+                    .getDocuments(){(querySnapshot, err) in
+                    if let err = err {
+                        print(err)
+                    }else{
+                        
+                        if let doc = querySnapshot!.documents.first{
+                            let data = doc.data()
+                            self.curruntNickname.text = data["nickname"] as! String
+                            
+                          
+                    
+                        }else{
+             
+                        }
+                        
+    //                                doc?.reference.updateData(["likemessage":FieldValue.arrayRemove([message.body])])
+                        
+                    }
+                }
+            }
+                
+                
+            }
+                    
+        }
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

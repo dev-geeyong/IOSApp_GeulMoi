@@ -15,4 +15,5 @@ pod 'ViewAnimator'
 pod 'YPImagePicker'
 pod 'RealmSwift'
 pod 'TweeTextField'
+pod 'Toast-Swift', '~> 5.0.1'
 end
