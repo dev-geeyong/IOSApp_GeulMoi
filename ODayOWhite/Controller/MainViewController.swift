@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     
     var imageLoader = ImageLoader()
     var commonImageURL = ""
-    let realm = try! Realm()
+    
     var likeArray: Results<LikeMessage>?
     
     @IBOutlet var imageView: UIImageView!
@@ -32,27 +32,18 @@ class MainViewController: UIViewController {
     var messages: [Message] = []
     
     
-    //    private let animations = [
-    //        AnimationType.vector(CGVector(dx: 0, dy: 5)),
-    //
-    //
-    //    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadBestMessage()
-        //tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         tableView.dataSource = self
         tableView.delegate = self
         
         tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        tableView.rowHeight = 170
+        tableView.rowHeight = 200
         
-        
-        
-        // Do any additional setup after loading the view.
+
     }
     override func viewDidAppear(_ animated: Bool) {
         loadMessages()
@@ -61,29 +52,32 @@ class MainViewController: UIViewController {
         tableView.reloadData()
     }
     func loadBestMessage(){
-        db.collection("admin")
-            .addSnapshotListener{(querySnapshot, error) in
-                if let e = error{
-                    print(e,"loadMessages error")
-                }else{
-                    if let snapshotDocuments = querySnapshot?.documents{
-                        for doc in snapshotDocuments{
-                            let data = doc.data()
-                            self.bestMessage.text = data["message"] as? String
-                            self.bestNickname.text = data["nickname"] as? String
-                            self.bestLike.text = data["like"] as? String
-                            
-                            let url = URL(string: data["imageURL"] as! String)
-                            
-                            let urlData = try? Data(contentsOf: url!)
-                            
-                            self.bestImageView.image = UIImage(data: urlData!)
-                            
-                            self.commonImageURL = data["commonImage"] as! String
+       
+           db.collection("admin")
+                .addSnapshotListener{(querySnapshot, error) in
+                    if let e = error{
+                        print(e,"loadMessages error")
+                    }else{
+                        if let snapshotDocuments = querySnapshot?.documents{
+                            for doc in snapshotDocuments{
+                                let data = doc.data()
+                                self.bestMessage.text = data["message"] as? String
+                                self.bestNickname.text = data["nickname"] as? String
+                                self.bestLike.text = data["like"] as? String
+                                
+                                let url = URL(string: data["imageURL"] as! String)
+                                
+                                let urlData = try? Data(contentsOf: url!)
+                                
+                                self.bestImageView.image = UIImage(data: urlData!)
+                                
+                                self.commonImageURL = data["commonImage"] as! String
+                            }
                         }
                     }
                 }
-            }
+        
+        
     }
     func loadMessages(){
         db.collection("users")
@@ -127,6 +121,7 @@ extension MainViewController: UITableViewDataSource {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         cell.delegate = self
+        
         imageLoader.obtainImageWithPath(imagePath: commonImageURL) { (image) in
                 
                 cell.backgroundImageView.image  = image
@@ -160,9 +155,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         
         switch orientation {
-        //        let activityVC = UIActivityViewController(activityItems: [self.messages[indexPath.row].body], applicationActivities: nil)
-        //        activityVC.popoverPresentationController?.sourceView = self.view
-        //        self.present(activityVC, animated: true, completion: nil)
+
         case .left:
             let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
@@ -256,7 +249,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
                                     
                                 }
                                 
-//                                doc?.reference.updateData(["likemessage":FieldValue.arrayRemove([message.body])])
+
                                 
                             }
                         }
@@ -272,28 +265,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
         }
         
     }
-    func updateModel(at indexPath: IndexPath){
-        if let likeArrayForDeletion = self.likeArray?[indexPath.row]{
-            do{
-                try self.realm.write{
-                    self.realm.delete(likeArrayForDeletion)
-                }
-            }catch{
-                print("update err")
-            }
-        }
-    }
-    func saveMessage(likeMessage: LikeMessage){
-        do{
-            try realm.write{
-                realm.add(likeMessage)
-            }
-        }catch{
-            print("save err")
-        }
-        //        tableView.reloadData()
-    }
-    
+
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         var options = SwipeOptions()
         options.expansionStyle = .none

@@ -5,7 +5,7 @@
 //  Created by dev.geeyong on 2021/01/17.
 //
 
-import Foundation
+import Foundation 
 import UIKit
 class ImageLoader {
     
@@ -25,7 +25,7 @@ class ImageLoader {
                 completionHandler(image)
             }
         } else {
-            let placeholder = #imageLiteral(resourceName: "37")
+            let placeholder = #imageLiteral(resourceName: "34")
             DispatchQueue.main.async {
                 completionHandler(placeholder)
             }

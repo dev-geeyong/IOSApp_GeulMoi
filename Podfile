@@ -16,4 +16,5 @@ pod 'YPImagePicker'
 pod 'RealmSwift'
 pod 'TweeTextField'
 pod 'Toast-Swift', '~> 5.0.1'
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'
 end

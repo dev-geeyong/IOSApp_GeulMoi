@@ -1,108 +1,97 @@
 //
-//  ShowSaveDataViewController.swift
+//  CurrentUserWriteDataViewController.swift
 //  ODayOWhite
 //
-//  Created by dev.geeyong on 2021/01/18.
+//  Created by dev.geeyong on 2021/01/19.
 //
 
 import UIKit
 import Firebase
 import SwipeCellKit
 
-class ShowSaveDataViewController: UIViewController {
+class CurrentUserWriteDataViewController: UIViewController {
     let db = Firestore.firestore()
-    var ary:Array<String>? = []
-
     @IBOutlet var tableView: UITableView!
-
+    var messages: [CurrentUserMessage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.rowHeight = 80.0
+        tableView.register(UINib(nibName: "LikeMessageTableViewCell", bundle: nil), forCellReuseIdentifier: "LikeMessageCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: "LikeMessageTableViewCell", bundle: nil), forCellReuseIdentifier: "LikeMessageCell")
-        getMessageData()
-    
-    
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        getMessageData()
+
+        
 
     }
     override func viewDidAppear(_ animated: Bool) {
-        
-        getMessageData()
-     
-      
+        loadMessages()
+
     }
+    //MARK: - 화면이 사라질 때 이전화면으로 돌려놓기.
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    //MARK: - 접속한 사용자가 작성한 글 가져오기
     func loadMessages(){
         DispatchQueue.main.async {
-            if self.ary != nil{
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-            }else{
-                print("loadMessage error")
-            }}
-    }
-
-    func getMessageData(){
-        DispatchQueue.main.async {
-        if let currentEmail = Auth.auth().currentUser?.email{
-            self.db.collection("usersData")
-                .whereField("email", isEqualTo: currentEmail)
-                .getDocuments(){(querySnapshot, err) in
-                if let err = err {
-                    print(err)
-                }else{
-                    
-                    if let doc = querySnapshot!.documents.first{
-                        let data = doc.data()
-                        self.ary = data["likemessages"] as? Array<String>
-                        
-                      
-                
-                    }else{
-         
+            if let currentEmail = Auth.auth().currentUser?.email{
+                self.db.collection("users")
+                    .whereField("email", isEqualTo: currentEmail)
+                    .addSnapshotListener(){(querySnapshot, err) in
+                        if let err = err{
+                            print(err)
+                        }else{
+                            if let snapshotDocuments = querySnapshot?.documents{
+                                for doc in snapshotDocuments{
+                                    let data = doc.data()
+                                    let body = data["mesagee"]
+                                    let newMessage = CurrentUserMessage(body: body as! String)
+                                    self.messages.append(newMessage)
+                                    DispatchQueue.main.async {
+                                        self.tableView.reloadData()
+                                    }
+                                }
+                            }
+                        }
                     }
-
-                }
             }
-        }
-            self.tableView.reloadData()
-            
-        }
-    }
-
-
-}
-extension ShowSaveDataViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if ary != nil{
-            return ary!.count
-        }
-        else{
-            return 5
         }
     }
     
+
+
+
+}
+extension CurrentUserWriteDataViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        tableView.reloadData()
+        
+    }
+    
+}
+extension CurrentUserWriteDataViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let message = messages[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LikeMessageCell", for: indexPath) as! LikeMessageTableViewCell
         cell.delegate = self
-        if ary != nil {
-            cell.likeMessage.text = ary![indexPath.row]
-  
-        }
+        cell.likeMessage.text = message.body
         return cell
     }
     
     
 }
-extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
+extension CurrentUserWriteDataViewController: SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
     
-        
+        let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "LikeMessageCell", for: indexPath) as! LikeMessageTableViewCell
         
         switch orientation {
@@ -113,19 +102,29 @@ extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
                     action, indexPath in
                     DispatchQueue.main.async {
                         if let currentEmail = Auth.auth().currentUser?.email{
-                            self.db.collection("usersData")
+                            self.db.collection("users")
                                 .whereField("email", isEqualTo: currentEmail)
-                                .getDocuments(){(querySnapshot, err) in
+                                .addSnapshotListener(){(querySnapshot, err) in
                                 if let err = err {
                                     print(err)
                                 }else{
-                                    
-                                    if let doc = querySnapshot!.documents.first{
+                                   
+                                    if let snapshotDocuments = querySnapshot?.documents{
+                                        for doc in snapshotDocuments{
+                                            let data = doc.data()
+                                            if (data["mesagee"] as! String == message.body){
+                                                doc.reference.delete()
+                                               
+                                                
+                                            }
+                                        }
                    
-                                        doc.reference.updateData(["likemessages":FieldValue.arrayRemove([self.ary![indexPath.row]])])
+                    
+                                        self.view.makeToast("삭제완료", duration: 7.0, position: .center)
                                         
-                                        self.view.makeToast("삭제완료")
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                                         
+//
                                             self.navigationController?.popViewController(animated: true)
                                         }
                                             
@@ -134,6 +133,7 @@ extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
                                         self.view.makeToast("fail")
                                         
                                     }
+ 
                                     
                                 }
                             }
@@ -153,20 +153,30 @@ extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
                 action, indexPath in
                 DispatchQueue.main.async {
                     if let currentEmail = Auth.auth().currentUser?.email{
-                        self.db.collection("usersData")
+                        self.db.collection("users")
                             .whereField("email", isEqualTo: currentEmail)
-                            .getDocuments(){(querySnapshot, err) in
+                            .addSnapshotListener(){(querySnapshot, err) in
                             if let err = err {
                                 print(err)
                             }else{
-                                
-                                if let doc = querySnapshot!.documents.first{
+                               
+                                if let snapshotDocuments = querySnapshot?.documents{
+                                    for doc in snapshotDocuments{
+                                        let data = doc.data()
+                                        if (data["mesagee"] as! String == message.body){
+                                            doc.reference.delete()
+                                           
+                                            
+                                        }
+                                    }
                
-                                    doc.reference.updateData(["likemessages":FieldValue.arrayRemove([self.ary![indexPath.row]])])
+                
+                                    self.view.makeToast("삭제완료", duration: 7.0, position: .center)
                                     
-                                    self.view.makeToast("삭제완료")
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                                        self.navigationController?.popViewController(animated: true)
+                                     
+//
+                                        self.navigationController?.popViewController(animated: true)// your code here
                                     }
                                         
                                    
@@ -174,6 +184,8 @@ extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
                                     self.view.makeToast("fail")
                                     
                                 }
+                                
+//                                doc?.reference.updateData(["likemessage":FieldValue.arrayRemove([cell.likeMessage.text])])
                                 
                             }
                         }
@@ -197,12 +209,4 @@ extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
         return options
     }
     
-}
-extension ShowSaveDataViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        tableView.reloadData()
-        
-    }
 }

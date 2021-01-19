@@ -13,6 +13,8 @@
 		460B69F225B58440008EEE77 /* ShowSaveDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */; };
 		4614FE7E25B4796300860DF1 /* ManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4614FE7D25B4796300860DF1 /* ManagementViewController.swift */; };
 		4614FE8B25B47B5F00860DF1 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4614FE8A25B47B5F00860DF1 /* ImageLoader.swift */; };
+		466ACF7D25B66E62007975BE /* CurrentUserWriteDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466ACF7C25B66E62007975BE /* CurrentUserWriteDataViewController.swift */; };
+		466ACF8025B6767F007975BE /* CurrentUserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466ACF7F25B6767F007975BE /* CurrentUserMessage.swift */; };
 		469AEE9225AD962F006A446D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 469AEE9125AD962F006A446D /* GoogleService-Info.plist */; };
 		469AEE9525AD9812006A446D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEE9425AD9812006A446D /* LoginViewController.swift */; };
 		469AEEAF25ADC4B9006A446D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */; };
@@ -44,6 +46,9 @@
 		460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSaveDataViewController.swift; sourceTree = "<group>"; };
 		4614FE7D25B4796300860DF1 /* ManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagementViewController.swift; sourceTree = "<group>"; };
 		4614FE8A25B47B5F00860DF1 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = /Users/dev.geeyong/ODayOWhite/ODayOWhite/Controller/ImageLoader.swift; sourceTree = "<absolute>"; };
+		466ACF5F25B66A7D007975BE /* ODayOWhite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ODayOWhite.entitlements; sourceTree = "<group>"; };
+		466ACF7C25B66E62007975BE /* CurrentUserWriteDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserWriteDataViewController.swift; sourceTree = "<group>"; };
+		466ACF7F25B6767F007975BE /* CurrentUserMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserMessage.swift; sourceTree = "<group>"; };
 		469AEE9125AD962F006A446D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		469AEE9425AD9812006A446D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		469AEEAE25ADC4B9006A446D /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +106,7 @@
 			children = (
 				46AB724A25B072C000281C32 /* LikeMessage.swift */,
 				46AB71DF25AF143900281C32 /* Message.swift */,
+				466ACF7F25B6767F007975BE /* CurrentUserMessage.swift */,
 				46AB71DB25AEEB5F00281C32 /* Const.swift */,
 			);
 			path = Model;
@@ -119,6 +125,7 @@
 				460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */,
 				46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */,
 				46B9ED9A25AE8F9F0024E6D4 /* TabBarController.swift */,
+				466ACF7C25B66E62007975BE /* CurrentUserWriteDataViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -156,6 +163,7 @@
 		46A1139825AD77E3001BAC80 /* ODayOWhite */ = {
 			isa = PBXGroup;
 			children = (
+				466ACF5F25B66A7D007975BE /* ODayOWhite.entitlements */,
 				460408A725AD7F4D007C618C /* Font */,
 				46A1139925AD77E3001BAC80 /* AppDelegate.swift */,
 				46A1139B25AD77E3001BAC80 /* SceneDelegate.swift */,
@@ -304,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46AB724B25B072C000281C32 /* LikeMessage.swift in Sources */,
+				466ACF7D25B66E62007975BE /* CurrentUserWriteDataViewController.swift in Sources */,
 				46AB724F25B07C9200281C32 /* LikeMessageTableViewCell.swift in Sources */,
 				469AEE9525AD9812006A446D /* LoginViewController.swift in Sources */,
 				46A1139E25AD77E3001BAC80 /* ViewController.swift in Sources */,
@@ -319,6 +328,7 @@
 				4614FE8B25B47B5F00860DF1 /* ImageLoader.swift in Sources */,
 				460B69F225B58440008EEE77 /* ShowSaveDataViewController.swift in Sources */,
 				46B9ED9E25AE9CFB0024E6D4 /* WriteViewController.swift in Sources */,
+				466ACF8025B6767F007975BE /* CurrentUserMessage.swift in Sources */,
 				469AEEE425ADE0CB006A446D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -451,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -467,6 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ODayOWhite/ODayOWhite.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TR28HNY8VK;
@@ -489,6 +500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ODayOWhite/ODayOWhite.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TR28HNY8VK;

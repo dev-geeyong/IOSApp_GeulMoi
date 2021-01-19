@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import TweeTextField
 
 class RegisterViewController: UIViewController {
     
@@ -17,11 +18,54 @@ class RegisterViewController: UIViewController {
     let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
-        nickNameTextField.addUnderLine()
-        emailTextField.addUnderLine()
-        
-        passwordTextField.addUnderLine()
+      
     }
+    @IBAction func passwordEditingChanged(_ sender: TweeAttributedTextField) {
+        if let userInput = sender.text {
+            if userInput.count == 0{
+                sender.activeLineColor = #colorLiteral(red: 0.03715451062, green: 0.4638677239, blue: 0.9536394477, alpha: 1)
+                sender.hideInfo(animated: true)
+            }else if userInput.count < 6{
+                sender.infoTextColor = .red
+                sender.activeLineColor = .red
+                sender.showInfo("6글자 이상 입력하세요!", animated: true)
+            }else{
+                sender.infoTextColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                sender.activeLineColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                sender.showInfo("잘 하셨습니다!", animated: true)
+            }
+            
+        }
+    }
+    @IBAction func passwordWhileEditing(_ sender: TweeAttributedTextField) {
+        
+    }
+    
+    @IBAction func myEmailWhileEditing(_ sender: TweeAttributedTextField) {
+        
+              if let userInput = sender.text {
+                  
+                  if userInput.count == 0 {
+                      sender.activeLineColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+                      sender.hideInfo(animated: true)
+                      return
+                  }
+                  
+                  if userInput.isValidEmail == true {
+                      sender.infoTextColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                      sender.activeLineColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                      sender.showInfo("이메일 형식 입니다!", animated: true)
+                  } else {
+                      sender.infoTextColor = .red
+                      sender.activeLineColor = .red
+                      
+                      sender.showInfo("이메일 형식이 아닙니다!", animated: true)
+                  }
+              }
+              
+          }
+        
+    
     @IBAction func registerPressed(_ sender: UIButton) {
         
         if let email = emailTextField.text , let password = passwordTextField.text {
@@ -30,27 +74,11 @@ class RegisterViewController: UIViewController {
                 
                 if let e = error {
                     
-                    
+                    self.view.makeToast("이미 사용 중인 이메일입니다.")
                     print(e.localizedDescription)
                 }
                 else{
-//                    if let inputMessaege = inputText.text{
-//
-//                        db.collection("users").addDocument(data: [
-//                            "email" : K.email,
-//                            "nickName" : K.nickName,
-//                            "mesagee" : inputMessaege,
-//                            "date" : 0 - Date().timeIntervalSince1970,
-//                            "likeNum" : 0
-//                        ]){(error) in
-//                            if let e = error {
-//                                print(e)
-//                            }else{
-//
-//                                print( Auth.auth().currentUser?.email ?? "sucsee")
-//                            }
-//                        }
-//                    }
+
                     if let nickname = self.nickNameTextField.text {
                         K.email = email
                         K.nickName = nickname
@@ -87,3 +115,10 @@ extension UITextField {
     
 }
 
+extension String {
+    
+    var isValidEmail: Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegEx).evaluate(with: self)
+    }
+}

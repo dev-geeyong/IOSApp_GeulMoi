@@ -218,6 +218,9 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - Firebase/Auth (7.4.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.4.0)
@@ -302,11 +305,11 @@ PODS:
   - nanopb/encode (2.30907.0)
   - PromisesObjC (1.2.12)
   - PryntTrimmerView (4.0.2)
-  - Realm (10.5.0):
-    - Realm/Headers (= 10.5.0)
-  - Realm/Headers (10.5.0)
-  - RealmSwift (10.5.0):
-    - Realm (= 10.5.0)
+  - Realm (10.5.1):
+    - Realm/Headers (= 10.5.1)
+  - Realm/Headers (10.5.1)
+  - RealmSwift (10.5.1):
+    - Realm (= 10.5.1)
   - SteviaLayout (4.7.3)
   - SwipeableTabBarController (3.3.0)
   - SwipeCellKit (2.7.1)
@@ -318,6 +321,7 @@ PODS:
     - SteviaLayout (~> 4.7.3)
 
 DEPENDENCIES:
+  - ChameleonFramework/Swift (from `https://github.com/wowansm/Chameleon.git`, branch `swift5`)
   - Firebase/Auth
   - Firebase/Firestore
   - RealmSwift
@@ -356,9 +360,20 @@ SPEC REPOS:
     - ViewAnimator
     - YPImagePicker
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :branch: swift5
+    :git: https://github.com/wowansm/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 96d52c36a45847fff60bcff7a58fec1e4bd7390b
+    :git: https://github.com/wowansm/Chameleon.git
+
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Firebase: 09fb40287b6dfc8ee65f726fa0b788719d3f2a07
   FirebaseAuth: d8dba8db90a1705ee2493857047282ca4f6e7598
   FirebaseCore: 99c06e5a1e8d6952e75cb1f0a6d0b23c0f5ccdcf
@@ -373,8 +388,8 @@ SPEC CHECKSUMS:
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
-  Realm: e1c22c3d83b229afb70ebc10e1771c91e9542d12
-  RealmSwift: 6fc078d9d3fd7e58c71bfdbb694e252462f112a5
+  Realm: 77fcb4e0b9f2963ea06f584749a0d7dc9cab95e1
+  RealmSwift: 6abe6aa6cd8b70cc1a87afcb9232cabea74ff1ac
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   SwipeableTabBarController: c815145a8d8f880d1a329044e5cf6e99c1c973e7
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
@@ -383,6 +398,6 @@ SPEC CHECKSUMS:
   ViewAnimator: 16435576cd44fca0b0d63147d5031fd3e91d295a
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 2f19da3dc939b6609cdbbf7b0a779743ac43e06e
+PODFILE CHECKSUM: 90bd65aaa8ab988b857bd13d9417ea9f279cf1ef
 
 COCOAPODS: 1.10.0

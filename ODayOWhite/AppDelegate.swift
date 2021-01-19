@@ -31,6 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    func check(){
+        
+    }
 
     // MARK: UISceneSession Lifecycle
 
