@@ -13,13 +13,27 @@ class LoginViewController: UIViewController {
 
     @IBOutlet var idTextField: UITextField!
     
+    @IBOutlet var mainImage: UIImageView!
     @IBOutlet var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let userID = UserDefaults.standard.string(forKey: "id"){
+            
+            self.performSegue(withIdentifier: "LoginToMain", sender: self)
+        }
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if let userID = UserDefaults.standard.string(forKey: "id"){
+           
+            self.performSegue(withIdentifier: "LoginToMain", sender: self)
+        }
+       
+      
+    }
+
     @IBAction func pressLoginButton(_ sender: UIButton) {
         if let email = idTextField.text , let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -27,7 +41,8 @@ class LoginViewController: UIViewController {
                     print(e.localizedDescription)
                     self.view.makeToast("맞지 않는 메일 주소(비밀번호)입니다. 다시 입력해 주세요.")
                 }else{
-                    UserDefaults.standard.set(email, forKey: "email")
+                    UserDefaults.standard.set(email, forKey: "id")
+                    print("저장")
                     self.performSegue(withIdentifier: "LoginToMain", sender: self)
                 }
             }

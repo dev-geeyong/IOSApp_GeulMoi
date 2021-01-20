@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import RealmSwift
 import MessageUI
 import SafariServices
 class PersonalInfoViewController: UIViewController  {
@@ -123,7 +122,10 @@ class PersonalInfoViewController: UIViewController  {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-            self.performSegue(withIdentifier: "goToLogin", sender: self)
+            UserDefaults.standard.removeObject(forKey: "id")
+
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//            self.performSegue(withIdentifier: "goToLogin", sender: self)
         }
     
 

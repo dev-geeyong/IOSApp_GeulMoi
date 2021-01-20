@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import SwipeableTabBarController
+//import SwipeableTabBarController
 import Firebase
 import SwipeCellKit
-import ViewAnimator
-import RealmSwift
 import Toast_Swift
+
 
 class MainViewController: UIViewController {
     
@@ -21,10 +20,11 @@ class MainViewController: UIViewController {
     
     @IBOutlet var bestImageView: UIImageView!
     
-    var imageLoader = ImageLoader()
+    
     var commonImageURL = ""
     
-    var likeArray: Results<LikeMessage>?
+    
+    var uiImage: UIImage?
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -34,7 +34,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadBestMessage()
+        print("viewDidLoad")
+        self.loadBestMessage()
+        self.loadMessages()
+        
+        
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         tableView.dataSource = self
@@ -42,43 +46,81 @@ class MainViewController: UIViewController {
         
         tableView.register(UINib(nibName: "MessageCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         tableView.rowHeight = 200
+        tableView.reloadData()
         
-
+        
+        
     }
     override func viewDidAppear(_ animated: Bool) {
-        loadMessages()
+        print(" viewDidAppear")
+        if self.uiImage != nil{
+            print("pass viewDidAppear")
+        }else{
+            self.loadBestMessage()}
+        
+        self.loadMessages()
         
         
-        tableView.reloadData()
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("r viewDidAppear")
+        if self.uiImage != nil{
+            print("pass viewWillAppear")
+        }else{
+            self.loadBestMessage()}
     }
     func loadBestMessage(){
-       
-           db.collection("admin")
-                .addSnapshotListener{(querySnapshot, error) in
-                    if let e = error{
-                        print(e,"loadMessages error")
-                    }else{
-                        if let snapshotDocuments = querySnapshot?.documents{
-                            for doc in snapshotDocuments{
-                                let data = doc.data()
-                                self.bestMessage.text = data["message"] as? String
-                                self.bestNickname.text = data["nickname"] as? String
-                                self.bestLike.text = data["like"] as? String
-                                
-                                let url = URL(string: data["imageURL"] as! String)
-                                
-                                let urlData = try? Data(contentsOf: url!)
-                                
-                                self.bestImageView.image = UIImage(data: urlData!)
-                                
-                                self.commonImageURL = data["commonImage"] as! String
+        
+        db.collection("admin")
+            .addSnapshotListener{(querySnapshot, error) in
+                if let e = error{
+                    print(e,"loadMessages error")
+                }else{
+                    if let snapshotDocuments = querySnapshot?.documents{
+                        for doc in snapshotDocuments{
+                            let data = doc.data()
+                            self.bestMessage.text = data["message"] as? String
+                            self.bestNickname.text = data["nickname"] as? String
+                            self.bestLike.text = data["like"] as? String
+                            
+                            let url = URL(string: data["imageURL"] as! String)
+                            
+                            let urlData = try? Data(contentsOf: url!)
+                            
+                            self.bestImageView.image = UIImage(data: urlData!)
+                            
+                            self.commonImageURL = data["commonImage"] as! String
+                            
+                            if let url = URL(string: self.commonImageURL){
+                                self.downloadImage(from: url)}
+                            else{
+                                self.uiImage = UIImage(named: "3")
                             }
+                            
+                            
                         }
                     }
                 }
+            }
         
         
     }
+    //MARK: - 사진 URL to UIimage
+    func downloadImage(from url: URL) {
+        print("Download Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.uiImage = UIImage(data: data)
+            }
+        }
+    }
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
     func loadMessages(){
         db.collection("users")
             .order(by: "date")
@@ -96,11 +138,15 @@ class MainViewController: UIViewController {
                                 self.messages.append(newMessage)
                                 
                                 DispatchQueue.main.async {
-                                    
                                     self.tableView.reloadData()
+                                    
                                     let indexPath = IndexPath(row: 0, section: 0)
+                                    self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
                                     self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                                    
+                                    
                                 }
+                                
                             }
                         }
                     }
@@ -118,21 +164,16 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
         
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+      
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         cell.delegate = self
-        
-        imageLoader.obtainImageWithPath(imagePath: commonImageURL) { (image) in
-                
-                cell.backgroundImageView.image  = image
-                
-            }
-        
-        
-        
+        if self.uiImage == nil{
+            cell.backgroundImageView.image  = UIImage(named: "18")
+        }
         cell.messageTextLabel.text = message.body
         cell.messageSenderLabel.text = message.name
         cell.messageCountLike.text = "\(message.likeNum)"
+        cell.backgroundImageView.image  = uiImage
         
         return cell
     }
@@ -142,7 +183,6 @@ extension MainViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        tableView.reloadData()
         
     }
 }
@@ -150,18 +190,19 @@ extension MainViewController: UITableViewDelegate{
 extension MainViewController: SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         let message = messages[indexPath.row]
-        let item = LikeMessage()
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         
         switch orientation {
-
+        
         case .left:
             let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
+                
+                
+                
                 let activityVC = UIActivityViewController(activityItems: [self.messages[indexPath.row].body], applicationActivities: nil)
                 activityVC.popoverPresentationController?.sourceView = self.view
                 self.present(activityVC, animated: true, completion: nil)
+                tableView.reloadData()
             })
             
             thumbsUpAction.title = "공유하기"
@@ -171,7 +212,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
             
             
             return [thumbsUpAction]
-        
+            
             
         case .right:
             
@@ -193,6 +234,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
                                     "likeNum": likenum as! Int - 1,
                                     
                                 ])
+                                self.view.makeToast("좋아요 취소")
                                 tableView.reloadRows(at: [indexPath], with: .fade)
                             }else{
                                 doc?.reference.updateData([
@@ -200,6 +242,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
                                     "likeNum": likenum as! Int + 1,
                                     
                                 ])
+                                self.view.makeToast("좋아요")
                                 tableView.reloadRows(at: [indexPath], with: .none)
                             }
                         }
@@ -231,28 +274,21 @@ extension MainViewController: SwipeTableViewCellDelegate{
                         self.db.collection("usersData")
                             .whereField("email", isEqualTo: currentEmail)
                             .getDocuments(){(querySnapshot, err) in
-                            if let err = err {
-                                print(err)
-                            }else{
-                                
-                                if let doc = querySnapshot!.documents.first{
-                                    let data = doc.data()
-                                    let ary:Array = data["likemessages"] as! Array<String>
-                                    for iem in ary {
-                                        print(iem)
-                                    }
-                                    doc.reference.updateData(["likemessages":FieldValue.arrayUnion([message.body])])
-                                    self.view.makeToast("저장완료")
-                                    tableView.reloadRows(at: [indexPath], with: .none)
+                                if let err = err {
+                                    print(err)
                                 }else{
-                                    self.view.makeToast("fail")
+                                    
+                                    if let doc = querySnapshot!.documents.first{
+                                        doc.reference.updateData(["likemessages":FieldValue.arrayUnion([message.body])])
+                                        self.view.makeToast("저장완료")
+                                        tableView.reloadRows(at: [indexPath], with: .none)
+                                    }else{
+                                        self.view.makeToast("fail")
+                                        
+                                    }
                                     
                                 }
-                                
-
-                                
                             }
-                        }
                     }
                 }
                 
@@ -265,7 +301,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
         }
         
     }
-
+    
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         var options = SwipeOptions()
         options.expansionStyle = .none

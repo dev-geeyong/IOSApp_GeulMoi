@@ -2,14 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>일일일번</string>
+	<string>글모이</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -24,6 +26,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>카메라 사용을 허용해주세요!</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>사진 저장을 위한 권한을 허용해주세요!</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>앨범 접근 권한을 허용해주세요!</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>MapoGoldenPier.ttf</string>
@@ -70,11 +78,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSCameraUsageDescription</key>
-    <string>카메라 사용을 허용해주세요!</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>앨범 접근 권한을 허용해주세요!</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>사진 저장을 위한 권한을 허용해주세요!</string>
+	<key>UIUserInterfaceStyle</key>
+	<string></string>
 </dict>
 </plist>

@@ -74,7 +74,7 @@ class RegisterViewController: UIViewController {
                 
                 if let e = error {
                     
-                    self.view.makeToast("이미 사용 중인 이메일입니다.")
+                    self.view.makeToast("이미 사용 중인 이메일이거나 입력이 잘못됐습니다.")
                     print(e.localizedDescription)
                 }
                 else{
@@ -94,7 +94,9 @@ class RegisterViewController: UIViewController {
                             }
                         }
                     }
+                    UserDefaults.standard.set(email, forKey: "id")
                     self.performSegue(withIdentifier: "goToMain", sender: self)
+                    
                 }
             }
         }

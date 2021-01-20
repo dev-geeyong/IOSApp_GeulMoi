@@ -101,7 +101,7 @@ extension ShowSaveDataViewController: UITableViewDataSource{
 }
 extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-    
+        
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LikeMessageCell", for: indexPath) as! LikeMessageTableViewCell
         
@@ -149,43 +149,24 @@ extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
   
   
         case .left:
-            let deleteAction2 = SwipeAction(style: .default, title: nil, handler: {
+            let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
-                DispatchQueue.main.async {
-                    if let currentEmail = Auth.auth().currentUser?.email{
-                        self.db.collection("usersData")
-                            .whereField("email", isEqualTo: currentEmail)
-                            .getDocuments(){(querySnapshot, err) in
-                            if let err = err {
-                                print(err)
-                            }else{
-                                
-                                if let doc = querySnapshot!.documents.first{
-               
-                                    doc.reference.updateData(["likemessages":FieldValue.arrayRemove([self.ary![indexPath.row]])])
-                                    
-                                    self.view.makeToast("삭제완료")
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                                        self.navigationController?.popViewController(animated: true)
-                                    }
-                                        
-                                   
-                                }else{
-                                    self.view.makeToast("fail")
-                                    
-                                }
-                                
-                            }
-                        }
-                    }
-                }
+
+
+
+                let activityVC = UIActivityViewController(activityItems: [self.ary![indexPath.row]], applicationActivities: nil)
+                activityVC.popoverPresentationController?.sourceView = self.view
+                self.present(activityVC, animated: true, completion: nil)
+                tableView.reloadData()
             })
-        
-            deleteAction2.title = "삭제하기"
-            deleteAction2.image = UIImage(systemName: "trash.fill")
-            deleteAction2.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
             
-            return [deleteAction2]
+            thumbsUpAction.title = "공유하기"
+            thumbsUpAction.image = UIImage(systemName: "square.and.arrow.up")
+            thumbsUpAction.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+            
+            
+            
+            return [thumbsUpAction]
         }
         
     }

@@ -76,7 +76,9 @@ class WriteViewController: UIViewController {
             }
         }
         K.TF.insert(true, at: 0)
+        
        self.tabBarController?.selectedIndex = 0
+        
         
         
         

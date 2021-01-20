@@ -9,12 +9,14 @@ target 'ODayOWhite' do
 pod 'Firebase/Auth'
  pod 'Firebase/Firestore'
 pod 'SwipeableTabBarController'
-pod 'RealmSwift'
+#pod 'RealmSwift'
 pod 'SwipeCellKit'
-pod 'ViewAnimator'
+#pod 'ViewAnimator'
 pod 'YPImagePicker'
-pod 'RealmSwift'
+
 pod 'TweeTextField'
 pod 'Toast-Swift', '~> 5.0.1'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'
+#pod 'TableViewReloadAnimation', '~> 0.0.5'
+pod 'SkeletonView'
 end

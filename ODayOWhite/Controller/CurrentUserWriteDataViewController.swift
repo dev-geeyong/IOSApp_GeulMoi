@@ -122,7 +122,7 @@ extension CurrentUserWriteDataViewController: SwipeTableViewCellDelegate{
                     
                                         self.view.makeToast("삭제완료", duration: 7.0, position: .center)
                                         
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                          
 //
                                             self.navigationController?.popViewController(animated: true)
@@ -149,55 +149,24 @@ extension CurrentUserWriteDataViewController: SwipeTableViewCellDelegate{
   
   
         case .left:
-            let deleteAction2 = SwipeAction(style: .default, title: nil, handler: {
+            let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
-                DispatchQueue.main.async {
-                    if let currentEmail = Auth.auth().currentUser?.email{
-                        self.db.collection("users")
-                            .whereField("email", isEqualTo: currentEmail)
-                            .addSnapshotListener(){(querySnapshot, err) in
-                            if let err = err {
-                                print(err)
-                            }else{
-                               
-                                if let snapshotDocuments = querySnapshot?.documents{
-                                    for doc in snapshotDocuments{
-                                        let data = doc.data()
-                                        if (data["mesagee"] as! String == message.body){
-                                            doc.reference.delete()
-                                           
-                                            
-                                        }
-                                    }
-               
-                
-                                    self.view.makeToast("삭제완료", duration: 7.0, position: .center)
-                                    
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                                     
-//
-                                        self.navigationController?.popViewController(animated: true)// your code here
-                                    }
-                                        
-                                   
-                                }else{
-                                    self.view.makeToast("fail")
-                                    
-                                }
-                                
-//                                doc?.reference.updateData(["likemessage":FieldValue.arrayRemove([cell.likeMessage.text])])
-                                
-                            }
-                        }
-                    }
-                }
+
+
+
+                let activityVC = UIActivityViewController(activityItems: [message.body], applicationActivities: nil)
+                activityVC.popoverPresentationController?.sourceView = self.view
+                self.present(activityVC, animated: true, completion: nil)
+                tableView.reloadData()
             })
-        
-            deleteAction2.title = "삭제하기"
-            deleteAction2.image = UIImage(systemName: "trash.fill")
-            deleteAction2.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
             
-            return [deleteAction2]
+            thumbsUpAction.title = "공유하기"
+            thumbsUpAction.image = UIImage(systemName: "square.and.arrow.up")
+            thumbsUpAction.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+            
+            
+            
+            return [thumbsUpAction]
         }
         
     }

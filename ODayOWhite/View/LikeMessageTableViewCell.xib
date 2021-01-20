@@ -23,12 +23,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOq-IT-57I">
-                        <rect key="frame" x="38" y="10" width="250" height="60"/>
+                        <rect key="frame" x="13" y="10" width="300" height="60"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 한줄을 입력하세요 명언이란 나때는 입니다 군인은 좋아요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="CDw-ol-ahG">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 한줄을 입력하세요 명언이란 나때는 입니다 군인은 좋아요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="CDw-ol-ahG">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="pqw-Xl-km0"/>
+                                    <constraint firstAttribute="width" constant="300" id="pqw-Xl-km0"/>
                                     <constraint firstAttribute="height" constant="60" id="up8-EH-4BW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="15"/>
@@ -36,6 +36,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="CDw-ol-ahG" firstAttribute="leading" secondItem="bOq-IT-57I" secondAttribute="leading" id="4B9-iG-dtL"/>
+                            <constraint firstItem="CDw-ol-ahG" firstAttribute="top" secondItem="bOq-IT-57I" secondAttribute="top" id="5Nz-bM-JHU"/>
+                            <constraint firstAttribute="bottom" secondItem="CDw-ol-ahG" secondAttribute="bottom" id="Kb5-ZD-uLb"/>
+                            <constraint firstAttribute="trailing" secondItem="CDw-ol-ahG" secondAttribute="trailing" id="gSH-WH-Vr4"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
