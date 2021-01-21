@@ -10,7 +10,8 @@ import UIKit
 import Firebase
 import SwipeCellKit
 import Toast_Swift
-
+import Kingfisher
+import ViewAnimator
 
 class MainViewController: UIViewController {
     
@@ -22,9 +23,9 @@ class MainViewController: UIViewController {
     
     
     var commonImageURL = ""
+
     
-    
-    var uiImage: UIImage?
+    var url: URL?
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -34,7 +35,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
+        print("메인페이지 viewDidLoad")
         self.loadBestMessage()
         self.loadMessages()
         
@@ -52,12 +53,7 @@ class MainViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        print(" viewDidAppear")
-        if self.uiImage != nil{
-            print("pass viewDidAppear")
-        }else{
-            self.loadBestMessage()}
-        
+
         self.loadMessages()
         
         
@@ -65,11 +61,7 @@ class MainViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("r viewDidAppear")
-        if self.uiImage != nil{
-            print("pass viewWillAppear")
-        }else{
-            self.loadBestMessage()}
+        
     }
     func loadBestMessage(){
         
@@ -88,17 +80,19 @@ class MainViewController: UIViewController {
                             let url = URL(string: data["imageURL"] as! String)
                             
                             let urlData = try? Data(contentsOf: url!)
-                            
-                            self.bestImageView.image = UIImage(data: urlData!)
-                            
-                            self.commonImageURL = data["commonImage"] as! String
-                            
-                            if let url = URL(string: self.commonImageURL){
-                                self.downloadImage(from: url)}
-                            else{
-                                self.uiImage = UIImage(named: "3")
+                            if urlData != nil{
+                                self.bestImageView.image = UIImage(data: urlData!)
+                                
+                            }else{
+                                self.bestImageView.image = UIImage(named: "38")
                             }
                             
+                            self.url = URL(string: data["commonImage"] as! String)
+                            let testUrl = try? Data(contentsOf: self.url!)
+                            if testUrl == nil{
+                                self.url = URL(string: "http://drive.google.com/uc?export=view&id=1lN6TfLHtLOQ5yY2BG3B7gnRw4E6vFiS9")
+                            }
+                           
                             
                         }
                     }
@@ -106,19 +100,6 @@ class MainViewController: UIViewController {
             }
         
         
-    }
-    //MARK: - 사진 URL to UIimage
-    func downloadImage(from url: URL) {
-        print("Download Started")
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.uiImage = UIImage(data: data)
-            }
-        }
-    }
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func loadMessages(){
@@ -141,11 +122,11 @@ class MainViewController: UIViewController {
                                     self.tableView.reloadData()
                                     
                                     let indexPath = IndexPath(row: 0, section: 0)
-                                    self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                                    
                                     self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                                     
-                                    
                                 }
+                              
                                 
                             }
                         }
@@ -167,13 +148,12 @@ extension MainViewController: UITableViewDataSource {
       
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         cell.delegate = self
-        if self.uiImage == nil{
-            cell.backgroundImageView.image  = UIImage(named: "18")
-        }
         cell.messageTextLabel.text = message.body
         cell.messageSenderLabel.text = message.name
         cell.messageCountLike.text = "\(message.likeNum)"
-        cell.backgroundImageView.image  = uiImage
+        cell.backgroundImageView.kf.setImage(with: url)
+        
+        
         
         return cell
     }
@@ -243,7 +223,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
                                     
                                 ])
                                 self.view.makeToast("좋아요")
-                                tableView.reloadRows(at: [indexPath], with: .none)
+                                tableView.reloadRows(at: [indexPath], with: .fade)
                             }
                         }
                         
@@ -281,7 +261,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
                                     if let doc = querySnapshot!.documents.first{
                                         doc.reference.updateData(["likemessages":FieldValue.arrayUnion([message.body])])
                                         self.view.makeToast("저장완료")
-                                        tableView.reloadRows(at: [indexPath], with: .none)
+                                        tableView.reloadRows(at: [indexPath], with: .fade)
                                     }else{
                                         self.view.makeToast("fail")
                                         

@@ -18,5 +18,9 @@ pod 'TweeTextField'
 pod 'Toast-Swift', '~> 5.0.1'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'
 #pod 'TableViewReloadAnimation', '~> 0.0.5'
+
 pod 'SkeletonView'
+pod 'Kingfisher', '~> 6.0'
+
+pod 'ImageSlideshow', '~> 1.9.0'
 end

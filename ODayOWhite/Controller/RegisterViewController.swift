@@ -18,6 +18,7 @@ class RegisterViewController: UIViewController {
     let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.keyboardType = .URL
       
     }
     @IBAction func passwordEditingChanged(_ sender: TweeAttributedTextField) {

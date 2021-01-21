@@ -114,18 +114,20 @@ extension CurrentUserWriteDataViewController: SwipeTableViewCellDelegate{
                                             let data = doc.data()
                                             if (data["mesagee"] as! String == message.body){
                                                 doc.reference.delete()
+                                                self.view.makeToast("삭제완료")
                                                
                                                 
                                             }
                                         }
                    
                     
-                                        self.view.makeToast("삭제완료", duration: 7.0, position: .center)
                                         
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        
+                                        DispatchQueue.main.async() {
                                          
 //
                                             self.navigationController?.popViewController(animated: true)
+                                            
                                         }
                                             
                                        

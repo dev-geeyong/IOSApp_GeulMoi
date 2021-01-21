@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import TweeTextField
 
+
 class LoginViewController: UIViewController {
 
     @IBOutlet var idTextField: UITextField!
@@ -17,7 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("첫화면 viewDidLoad")
         if let userID = UserDefaults.standard.string(forKey: "id"){
             
             self.performSegue(withIdentifier: "LoginToMain", sender: self)
@@ -25,13 +26,21 @@ class LoginViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        
+        print("첫화면 viewDidAppear")
         if let userID = UserDefaults.standard.string(forKey: "id"){
            
             self.performSegue(withIdentifier: "LoginToMain", sender: self)
         }
        
       
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if Core.shared.isNewUser(){
+            let vc = storyboard?.instantiateViewController(identifier: "welcome2") as! GuideViewController
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        }
     }
 
     @IBAction func pressLoginButton(_ sender: UIButton) {
@@ -48,6 +57,15 @@ class LoginViewController: UIViewController {
             }
         }
     }
+}
+class Core {
     
-
+    static let shared = Core()
+    
+    func isNewUser() -> Bool{
+        return !UserDefaults.standard.bool(forKey: "isNewUser")
+    }
+    func setIsNotNewUser(){
+        UserDefaults.standard.set(true, forKey: "isNewUser")
+    }
 }

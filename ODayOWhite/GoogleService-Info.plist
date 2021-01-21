@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>868324169271-ib6ilfqequ6f64nhiq89egmm225ma0ha.apps.googleusercontent.com</string>
+	<string>396715892523-deh39sdm18mbpr5gojr3m01061ej2bvd.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.868324169271-ib6ilfqequ6f64nhiq89egmm225ma0ha</string>
+	<string>com.googleusercontent.apps.396715892523-deh39sdm18mbpr5gojr3m01061ej2bvd</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAjhgS4pGTEqImPlXm4Dk4rar8OKi9KRLA</string>
+	<string>AIzaSyCvkkjT6aFbvkPoqux7khU13vGa-cxRkzQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>868324169271</string>
+	<string>396715892523</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>co.devgeeyong.Flash-Chat-iOS13</string>
+	<string>com.dev.geeyong.writing-gather</string>
 	<key>PROJECT_ID</key>
-	<string>odayowrite</string>
+	<string>writinggatheriosapp</string>
 	<key>STORAGE_BUCKET</key>
-	<string>odayowrite.appspot.com</string>
+	<string>writinggatheriosapp.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:868324169271:ios:fd37284f85802775cb51b2</string>
+	<string>1:396715892523:ios:b3c377fffe3fee7163af6e</string>
 </dict>
 </plist>
