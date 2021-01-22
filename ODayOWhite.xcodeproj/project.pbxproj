@@ -11,7 +11,6 @@
 		460408A525AD7E5D007C618C /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 460408A325AD7E5D007C618C /* MessageCell.xib */; };
 		460408A925AD7FB0007C618C /* MapoGoldenPier.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 460408A825AD7FB0007C618C /* MapoGoldenPier.ttf */; };
 		460B69F225B58440008EEE77 /* ShowSaveDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */; };
-		4615939225B874B500FB365D /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615939125B874B500FB365D /* LaunchScreenViewController.swift */; };
 		466ACF7D25B66E62007975BE /* CurrentUserWriteDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466ACF7C25B66E62007975BE /* CurrentUserWriteDataViewController.swift */; };
 		466ACF8025B6767F007975BE /* CurrentUserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466ACF7F25B6767F007975BE /* CurrentUserMessage.swift */; };
 		469AEE9525AD9812006A446D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEE9425AD9812006A446D /* LoginViewController.swift */; };
@@ -43,7 +42,6 @@
 		460408A325AD7E5D007C618C /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		460408A825AD7FB0007C618C /* MapoGoldenPier.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MapoGoldenPier.ttf; sourceTree = "<group>"; };
 		460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSaveDataViewController.swift; sourceTree = "<group>"; };
-		4615939125B874B500FB365D /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		466ACF5F25B66A7D007975BE /* ODayOWhite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ODayOWhite.entitlements; sourceTree = "<group>"; };
 		466ACF7C25B66E62007975BE /* CurrentUserWriteDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserWriteDataViewController.swift; sourceTree = "<group>"; };
 		466ACF7F25B6767F007975BE /* CurrentUserMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserMessage.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 				4614FE8125B47A6800860DF1 /* Model */,
 				46A113A225AD77E9001BAC80 /* Assets.xcassets */,
 				46A113A425AD77E9001BAC80 /* LaunchScreen.storyboard */,
-				4615939125B874B500FB365D /* LaunchScreenViewController.swift */,
 				46C8454925B924F9004A0E1A /* GoogleService-Info.plist */,
 				46A113A725AD77E9001BAC80 /* Info.plist */,
 			);
@@ -324,7 +321,6 @@
 				460B69F225B58440008EEE77 /* ShowSaveDataViewController.swift in Sources */,
 				46B9ED9E25AE9CFB0024E6D4 /* WriteViewController.swift in Sources */,
 				466ACF8025B6767F007975BE /* CurrentUserMessage.swift in Sources */,
-				4615939225B874B500FB365D /* LaunchScreenViewController.swift in Sources */,
 				469AEEE425ADE0CB006A446D /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

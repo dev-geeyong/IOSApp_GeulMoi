@@ -139,14 +139,14 @@
                                 <color key="backgroundColor" red="0.32149565219999998" green="0.58640944959999997" blue="0.83532875780000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RxE-IF-QkG">
-                                <rect key="frame" x="89" y="827" width="250" height="55"/>
+                                <rect key="frame" x="64" y="512" width="300" height="80"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ2-xW-pdx">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="55" id="RaK-Ch-Q5k"/>
-                                            <constraint firstAttribute="width" constant="250" id="gr3-6U-hv0"/>
+                                            <constraint firstAttribute="height" constant="80" id="RaK-Ch-Q5k"/>
+                                            <constraint firstAttribute="width" constant="300" id="gr3-6U-hv0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <state key="normal" title="글모이 시작하기!">
@@ -163,7 +163,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="one-finger-click (1)" translatesAutoresizingMaskIntoConstraints="NO" id="TpJ-yd-tvX">
-                                        <rect key="frame" x="202" y="5" width="45" height="45"/>
+                                        <rect key="frame" x="252" y="17.666666666666629" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="QjA-zm-KhA"/>
                                             <constraint firstAttribute="width" constant="45" id="hhv-Jm-7h7"/>
@@ -193,13 +193,15 @@
                             <constraint firstItem="gaz-4h-l2l" firstAttribute="top" secondItem="Afl-NN-XCP" secondAttribute="top" id="I16-LZ-MLU"/>
                             <constraint firstAttribute="bottom" secondItem="gaz-4h-l2l" secondAttribute="bottom" id="INh-1s-Jjf"/>
                             <constraint firstAttribute="trailing" secondItem="gaz-4h-l2l" secondAttribute="trailing" id="hT5-dB-nMw"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="RxE-IF-QkG" secondAttribute="bottom" constant="10" id="kJF-ya-WLG"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="RxE-IF-QkG" secondAttribute="bottom" constant="300" id="kJF-ya-WLG"/>
+                            <constraint firstItem="RxE-IF-QkG" firstAttribute="centerX" secondItem="Afl-NN-XCP" secondAttribute="centerX" id="kjw-Gj-BPP"/>
                             <constraint firstItem="gaz-4h-l2l" firstAttribute="leading" secondItem="Afl-NN-XCP" secondAttribute="leading" id="vPt-CN-XHb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Nsb-RM-s4u"/>
                     <connections>
                         <outlet property="allowBluetooth" destination="QJ2-xW-pdx" id="n4u-GI-ZiW"/>
+                        <outlet property="hideView" destination="RxE-IF-QkG" id="0cf-Za-7Rn"/>
                         <outlet property="onboardingView" destination="gaz-4h-l2l" id="oUD-CP-3hm"/>
                     </connections>
                 </viewController>
@@ -241,7 +243,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Vf-XZ-ekf">
                                                 <rect key="frame" x="64" y="15" width="300" height="80"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wlwl@naver.com" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cd7-it-v78" customClass="TweeAttributedTextField" customModule="TweeTextField">
+                                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cd7-it-v78" customClass="TweeAttributedTextField" customModule="TweeTextField">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -258,7 +260,7 @@
                                                             <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="이메일"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123789" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yss-zx-5bv" customClass="TweeAttributedTextField" customModule="TweeTextField">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yss-zx-5bv" customClass="TweeAttributedTextField" customModule="TweeTextField">
                                                         <rect key="frame" x="0.0" y="50" width="300" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -354,7 +356,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글모이" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfi-1K-dWT">
-                                        <rect key="frame" x="149" y="50" width="130" height="100"/>
+                                        <rect key="frame" x="139" y="50" width="150" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="IGZ-74-2RP"/>
                                             <constraint firstAttribute="height" constant="100" id="igM-jB-5aC"/>
@@ -444,7 +446,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L35-s3-Oc6">
-                                        <rect key="frame" x="170.66666666666666" y="250" width="86.999999999999972" height="42"/>
+                                        <rect key="frame" x="164" y="250" width="100" height="42"/>
                                         <fontDescription key="fontDescription" name="MapoGoldenPier" family="MapoGoldenPier" pointSize="25"/>
                                         <state key="normal" title="회원가입">
                                             <color key="titleColor" systemColor="labelColor"/>
@@ -1056,7 +1058,7 @@
  출처:
  icons - &lt;div&gt;Icons made by &lt;a href="https://www.flaticon.com/authors/dmitri13" title="dmitri13"&gt;dmitri13&lt;/a&gt; from &lt;a href="https://www.flaticon.com/" title="Flaticon"&gt;www.flaticon.com&lt;/a&gt;&lt;/div&gt;
 Images - https://pixabay.com/ 
-
+font - Mapo금빛나루 
 
 - 개발/디자인 - 윤지용
 ✉ dev.geeyong@gmail.com  
@@ -1143,7 +1145,7 @@ GitHub - https://github.com/dev-geeyong </mutableString>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Rci-sh-n3q"/>
+        <segue reference="PnT-Hs-Qrt"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="57heart" width="28.5" height="28.5"/>
