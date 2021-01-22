@@ -1,4 +1,3 @@
-![Icon-1024](https://user-images.githubusercontent.com/55137069/105466287-580e7a80-5cd7-11eb-96ad-62bbdf87477f.png)
 
 ![1](https://user-images.githubusercontent.com/55137069/105466333-6a88b400-5cd7-11eb-9694-92392ea35195.png)
 ![2](https://user-images.githubusercontent.com/55137069/105466350-72485880-5cd7-11eb-865c-843341cbae5c.png)
