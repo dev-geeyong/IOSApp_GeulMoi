@@ -10,5 +10,5 @@ import Foundation
 struct K {
     static var email = ""
     static var nickName = ""
-    static var TF = Array(repeating: true, count: 100000)
+    static var TF = false
 }

@@ -31,6 +31,9 @@
 		46B9ED9E25AE9CFB0024E6D4 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */; };
 		46C8454A25B924F9004A0E1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46C8454925B924F9004A0E1A /* GoogleService-Info.plist */; };
 		46DF7EB925AED553003A3D0E /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DF7EB825AED553003A3D0E /* PersonalInfoViewController.swift */; };
+		46F1B8DA25BD492800C0A849 /* ClauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1B8D925BD492800C0A849 /* ClauseViewController.swift */; };
+		46F1B8DD25BD4B5700C0A849 /* PrivacyAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1B8DC25BD4B5700C0A849 /* PrivacyAgreementViewController.swift */; };
+		46F1B90725BD7BD200C0A849 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F1B90625BD7BD200C0A849 /* Feed.swift */; };
 		46F5C7BB25B9A095001CEDBF /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F5C7BA25B9A095001CEDBF /* GuideViewController.swift */; };
 		48C6FBF3B5C77D1B23A21CA9 /* Pods_ODayOWhite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F175D686EA69E8DABB0EA290 /* Pods_ODayOWhite.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +67,9 @@
 		46B9ED9D25AE9CFB0024E6D4 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		46C8454925B924F9004A0E1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46DF7EB825AED553003A3D0E /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
+		46F1B8D925BD492800C0A849 /* ClauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClauseViewController.swift; sourceTree = "<group>"; };
+		46F1B8DC25BD4B5700C0A849 /* PrivacyAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAgreementViewController.swift; sourceTree = "<group>"; };
+		46F1B90625BD7BD200C0A849 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		46F5C7BA25B9A095001CEDBF /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		F175D686EA69E8DABB0EA290 /* Pods_ODayOWhite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ODayOWhite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,6 +109,7 @@
 				46AB71DF25AF143900281C32 /* Message.swift */,
 				466ACF7F25B6767F007975BE /* CurrentUserMessage.swift */,
 				46AB71DB25AEEB5F00281C32 /* Const.swift */,
+				46F1B90625BD7BD200C0A849 /* Feed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,10 +135,12 @@
 			isa = PBXGroup;
 			children = (
 				46AB724D25B07C9200281C32 /* LikeMessageTableViewCell.swift */,
-				460408A225AD7E5D007C618C /* MessageCell.swift */,
 				460408A325AD7E5D007C618C /* MessageCell.xib */,
+				46F1B8D925BD492800C0A849 /* ClauseViewController.swift */,
 				46AB724E25B07C9200281C32 /* LikeMessageTableViewCell.xib */,
+				460408A225AD7E5D007C618C /* MessageCell.swift */,
 				46A1139F25AD77E3001BAC80 /* Main.storyboard */,
+				46F1B8DC25BD4B5700C0A849 /* PrivacyAgreementViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				466ACF7D25B66E62007975BE /* CurrentUserWriteDataViewController.swift in Sources */,
+				46F1B90725BD7BD200C0A849 /* Feed.swift in Sources */,
 				46F5C7BB25B9A095001CEDBF /* GuideViewController.swift in Sources */,
 				46AB724F25B07C9200281C32 /* LikeMessageTableViewCell.swift in Sources */,
 				469AEE9525AD9812006A446D /* LoginViewController.swift in Sources */,
@@ -320,8 +330,10 @@
 				46AB71E025AF143900281C32 /* Message.swift in Sources */,
 				460B69F225B58440008EEE77 /* ShowSaveDataViewController.swift in Sources */,
 				46B9ED9E25AE9CFB0024E6D4 /* WriteViewController.swift in Sources */,
+				46F1B8DA25BD492800C0A849 /* ClauseViewController.swift in Sources */,
 				466ACF8025B6767F007975BE /* CurrentUserMessage.swift in Sources */,
 				469AEEE425ADE0CB006A446D /* MainViewController.swift in Sources */,
+				46F1B8DD25BD4B5700C0A849 /* PrivacyAgreementViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,12 +484,14 @@
 				CODE_SIGN_ENTITLEMENTS = ODayOWhite/ODayOWhite.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TR28HNY8VK;
 				INFOPLIST_FILE = ODayOWhite/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.geeyong.writing-gather";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -495,12 +509,14 @@
 				CODE_SIGN_ENTITLEMENTS = ODayOWhite/ODayOWhite.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TR28HNY8VK;
 				INFOPLIST_FILE = ODayOWhite/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dev.geeyong.writing-gather";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -75,8 +75,8 @@ class WriteViewController: UIViewController {
                 }
             }
         }
-        K.TF.insert(true, at: 0)
-        
+       // K.TF.insert(true, at: 0)
+        K.TF = true
        self.tabBarController?.selectedIndex = 0
         
         

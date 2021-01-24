@@ -9,11 +9,13 @@ import UIKit
 import Firebase
 import TweeTextField
 
+
 class RegisterViewController: UIViewController {
     
     @IBOutlet var nickNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
+    
     
     let db = Firestore.firestore()
     override func viewDidLoad() {
@@ -103,6 +105,8 @@ class RegisterViewController: UIViewController {
         }
         
     }
+    
+
 }
 extension UITextField {
     
