@@ -65,7 +65,8 @@ class WriteViewController: UIViewController {
                 "nickName" : K.nickName,
                 "mesagee" : inputMessaege,
                 "date" : 0 - Date().timeIntervalSince1970,
-                "likeNum" : 0
+                "likeNum" : 0,
+                "block" : 0
             ]){(error) in
                 if let e = error {
                     print(e)

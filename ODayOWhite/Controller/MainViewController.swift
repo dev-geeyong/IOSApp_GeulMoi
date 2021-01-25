@@ -36,8 +36,14 @@ class MainViewController: UIViewController {
     var messages: [Message] = []
     var testArray: [Feed] = []
     
+   
+    var block: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let blockEmail = UserDefaults.standard.string(forKey: "email"){
+            block = blockEmail
+        }
         print("메인페이지 viewDidLoad")
         self.loadBestMessage()
         self.loadMessages()
@@ -117,16 +123,24 @@ class MainViewController: UIViewController {
                         for doc in snapshotDocuments{
                             let data = doc.data()
                             
-                            if let messageSender = data["nickName"] as? String, let messageBody = data["mesagee"] as? String, let messageEmail = data["email"] as? String, let likeNum = data["likeNum"] as? Int{
-                                let newMessage = Message(sender: messageEmail, body: messageBody, name: messageSender, likeNum: likeNum)
-                                let test = Feed(likeNum: likeNum, isFavorite: false)
-                                let test2 = Feed(likeNum: 18, isFavorite: false)
-                                if (K.TF == true){
-                                    self.testArray.insert(test2, at: 0)
-                                    K.TF = false
+                            if let messageSender = data["nickName"] as? String, let messageBody = data["mesagee"] as? String, let messageEmail = data["email"] as? String, let likeNum = data["likeNum"] as? Int, let blockcount = data["block"] as? Int{
+                                if  blockcount >= 3{
+                                    doc.reference.delete()
                                 }
-                                self.messages.append(newMessage)
-                                self.testArray.append(test)
+                                if data["email"] as! String != self.block{
+                                    
+                                    let newMessage = Message(sender: messageEmail, body: messageBody, name: messageSender, likeNum: likeNum)
+                                    self.messages.append(newMessage)
+                                    let test = Feed(likeNum: likeNum, isFavorite: false)
+                                    let test2 = Feed(likeNum: 18, isFavorite: false)
+                                    if (K.TF == true){
+                                        self.testArray.insert(test2, at: 0)
+                                        K.TF = false
+                                    }
+                                    
+                                    self.testArray.append(test)
+                                }
+                               
                                 
                                 DispatchQueue.main.async {
                                     self.tableView.reloadData()
@@ -216,16 +230,32 @@ extension MainViewController: SwipeTableViewCellDelegate{
                     self.view.makeToast("연결된 mail이 없습니다 아이폰 기본 mail 어플을 확인해주세요")
                     return
                 }
-                let composer = MFMailComposeViewController()
-                composer.mailComposeDelegate = self
-                composer.setToRecipients(["dev.geeyong@gmail.com"])
-                composer.setSubject("신고하기")
-                composer.setMessageBody("신고내용 : \(self.messages[indexPath.row].body) 닉네임 : \(self.messages[indexPath.row].name)", isHTML: false)
-
-                self.present(composer, animated: true)
-               // self.messages.remove(at: indexPath.row)
-                tableView.reloadData()
+                self.db.collection("users").whereField("email", isEqualTo: self.messages[indexPath.row].sender).getDocuments(){(querySnapshot, err) in
+                    if let err = err {
+                        print(err)
+                    }else{
+                        
+                        let doc = querySnapshot!.documents.first
+                        //doc?.reference.delete()
+                        if let currentblock = doc?.data()["block"]{
+                                doc?.reference.updateData(["block": currentblock as! Int + 1])
+                            let composer = MFMailComposeViewController()
+                            composer.mailComposeDelegate = self
+                            composer.setToRecipients(["dev.geeyong@gmail.com"])
+                            composer.setSubject("신고하기")
+                            composer.setMessageBody("신고내용 : \(self.messages[indexPath.row].body) 닉네임 : \(self.messages[indexPath.row].sender)", isHTML: false)
+                            UserDefaults.standard.set(self.messages[indexPath.row].sender, forKey: "email")
+                            self.block = self.messages[indexPath.row].sender
+                            self.present(composer, animated: true)
+                           self.messages.remove(at: indexPath.row)
+                            tableView.reloadData()
+                        }
+                        
+                    }
                 
+                
+               
+                }
                 
             })
             
