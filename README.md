@@ -1,7 +1,14 @@
+# 글모이 - 세상 아름다운 글들이 모이는 서비스 (이번 달 최고의 글에 도전하기)
+
 ![그림1](https://user-images.githubusercontent.com/55137069/105467128-98bac380-5cd8-11eb-9eb9-49150b2272f1.png)
 
-https://apps.apple.com/kr/app/%EA%B8%80%EB%AA%A8%EC%9D%B4/id1550222956
 
-### 개발기간 2020.01.12 ~ 2020.01.22
+### 글모이 - 세상 아름다운 글들이 모이는 서비스 (이번 달 최고의 글에 도전하기)(개인)
+#### - 진행기간 : 2021.01.12 ~ 2021.01.22
+#### - 주요내용 : 사용자가 명언과 같은 글을 업로드, 저장
+#### - 구현기능 : 회원가입/로그인 기능 , 게시글의 좋아요/저장/신고/공유 기능, 배경사진 변경 및 이미지 저장 기능 , 저장/작성한 글 확인 및 삭제, 공유기능
+#### - 기여도 : iOS(100%)
+#### - 사용스킬 : iOS, Swift, Firebase
+#### - 앱스토어링크 [AppStore - 글모이](https://apps.apple.com/kr/app/%EA%B8%80%EB%AA%A8%EC%9D%B4/id1550222956)
 
-[![](http://img.youtube.com/vi/eK9fz93OS-g/0.jpg)](http://www.youtube.com/watch?v=eK9fz93OS-g "글모이")
+[구동영상![](http://img.youtube.com/vi/eK9fz93OS-g/0.jpg)](http://www.youtube.com/watch?v=eK9fz93OS-g "글모이")
