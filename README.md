@@ -5,3 +5,4 @@ https://apps.apple.com/kr/app/%EA%B8%80%EB%AA%A8%EC%9D%B4/id1550222956
 ### 개발기간 2020.01.12 ~ 2020.01.22
 
 
+https://youtu.be/eK9fz93OS-g
