@@ -8,7 +8,7 @@
 #### - 주요내용 : 사용자가 명언과 같은 글을 업로드, 저장, 삭제, 공유, 좋아요, 신고
 #### - 구현기능 : [회원가입/로그인] , [게시글의 좋아요/저장/신고/공유], [신고누적시 게시글 자동삭제], [배경사진 변경 및 이미지 저장], [저장/작성한 글 확인 및 삭제, 공유]
 #### - 기여도 : iOS(100%)
-#### - 사용스킬 : iOS, Swift, Firebase
+#### - 사용스킬 : iOS, Swift, Firebase, MVC 패턴
 #### - 앱스토어링크 [AppStore - 글모이](https://apps.apple.com/kr/app/%EA%B8%80%EB%AA%A8%EC%9D%B4/id1550222956)
 
 [구동영상![](http://img.youtube.com/vi/eK9fz93OS-g/0.jpg)](http://www.youtube.com/watch?v=eK9fz93OS-g "글모이")
