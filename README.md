@@ -10,4 +10,8 @@
 #### - 사용스킬 : iOS, Swift, Firebase, MVC 패턴
 #### - 앱스토어링크 [AppStore - 글모이](https://apps.apple.com/kr/app/%EA%B8%80%EB%AA%A8%EC%9D%B4/id1550222956)
 
+#### - [회원가입/로그인] , [게시글의 좋아요/저장/신고/공유]
+![글모이회원가입](https://user-images.githubusercontent.com/55137069/109469065-df0dfa00-7ab0-11eb-917c-f5352550a1f9.gif) ![Mar-01-2021 17-05-24](https://user-images.githubusercontent.com/55137069/109469068-e0d7bd80-7ab0-11eb-9b7b-d1c43522adda.gif)
+
+
 [구동영상![](http://img.youtube.com/vi/eK9fz93OS-g/0.jpg)](http://www.youtube.com/watch?v=eK9fz93OS-g "글모이")
