@@ -10,8 +10,13 @@
 #### - 사용스킬 : iOS, Swift, Firebase, MVC 패턴
 #### - 앱스토어링크 [AppStore - 글모이](https://apps.apple.com/kr/app/%EA%B8%80%EB%AA%A8%EC%9D%B4/id1550222956)
 
-#### - [회원가입/로그인] , [게시글의 좋아요/저장/신고/공유]
+#### [회원가입/로그인] , [게시글의 좋아요/저장/신고/공유]
 ![글모이회원가입](https://user-images.githubusercontent.com/55137069/109469065-df0dfa00-7ab0-11eb-917c-f5352550a1f9.gif) ![Mar-01-2021 17-05-24](https://user-images.githubusercontent.com/55137069/109469068-e0d7bd80-7ab0-11eb-9b7b-d1c43522adda.gif)
 
+#### [글 업로드] , [배경사진 변경 및 이미지 저장]
+![Mar-01-2021 17-06-30](https://user-images.githubusercontent.com/55137069/109469216-167ca680-7ab1-11eb-8a82-871517dffefd.gif) ![Mar-01-2021 17-12-50](https://user-images.githubusercontent.com/55137069/109469473-69eef480-7ab1-11eb-800a-a59c21e1f72e.gif)
+
+#### [저장/작성한 글 확인 및 삭제, 공유]
+![Mar-01-2021 17-08-05](https://user-images.githubusercontent.com/55137069/109469397-4f1c8000-7ab1-11eb-9cad-96cf79bb7f6a.gif)
 
 [구동영상![](http://img.youtube.com/vi/eK9fz93OS-g/0.jpg)](http://www.youtube.com/watch?v=eK9fz93OS-g "글모이")
