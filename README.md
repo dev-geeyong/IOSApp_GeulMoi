@@ -19,4 +19,5 @@
 #### [저장/작성한 글 확인 및 삭제, 공유]
 ![Mar-01-2021 17-08-05](https://user-images.githubusercontent.com/55137069/109469397-4f1c8000-7ab1-11eb-9cad-96cf79bb7f6a.gif)
 
+#### 영상
 [구동영상![](http://img.youtube.com/vi/eK9fz93OS-g/0.jpg)](http://www.youtube.com/watch?v=eK9fz93OS-g "글모이")
