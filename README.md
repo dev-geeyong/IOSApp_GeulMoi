@@ -1,5 +1,4 @@
 # 글모이 - 세상 아름다운 글들이 모이는 서비스 (이번 달 최고의 글에 도전하기)
-![1284x2778bb-1](https://user-images.githubusercontent.com/55137069/109466662-69ecf580-7aad-11eb-8ece-bb284c906ed7.png) ![1284x2778bb-2](https://user-images.githubusercontent.com/55137069/109466667-6c4f4f80-7aad-11eb-86af-32775955d777.png) ![1284x2778bb-3](https://user-images.githubusercontent.com/55137069/109466671-6ce7e600-7aad-11eb-909d-59cdccd2da5c.png)
 ![그림1](https://user-images.githubusercontent.com/55137069/105467128-98bac380-5cd8-11eb-9eb9-49150b2272f1.png)
 
 
