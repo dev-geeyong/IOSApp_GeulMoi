@@ -93,7 +93,7 @@ class MainViewController: UIViewController {
                                 self.bestImageView.image = UIImage(data: urlData!)
                                 
                             }else{
-                                self.bestImageView.image = UIImage(named: "38")
+                                self.bestImageView.image = UIImage(named: "39")
                             }
                             
                             self.url = URL(string: data["commonImage"] as! String)
