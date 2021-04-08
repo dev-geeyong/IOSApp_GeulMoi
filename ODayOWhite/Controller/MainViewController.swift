@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     
     
     var commonImageURL = ""
-
+    
     
     var url: URL?
     
@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
     var messages: [Message] = []
     var testArray: [Feed] = []
     
-   
+    
     var block: String = ""
     
     override func viewDidLoad() {
@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-
+        
         self.loadMessages()
         
         
@@ -101,7 +101,7 @@ class MainViewController: UIViewController {
                             if testUrl == nil{
                                 self.url = URL(string: "http://drive.google.com/uc?export=view&id=1lN6TfLHtLOQ5yY2BG3B7gnRw4E6vFiS9")
                             }
-                           
+                            
                             
                         }
                     }
@@ -140,7 +140,7 @@ class MainViewController: UIViewController {
                                     
                                     self.testArray.append(test)
                                 }
-                               
+                                
                                 
                                 DispatchQueue.main.async {
                                     self.tableView.reloadData()
@@ -170,17 +170,17 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
         
-      
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         cell.delegate = self
-//        if self.testArray.count > 0 {
-//            cell.messageTextLabel.text = testArray[indexPath.row].content
-//        }
+        //        if self.testArray.count > 0 {
+        //            cell.messageTextLabel.text = testArray[indexPath.row].content
+        //        }
         cell.messageTextLabel.text = message.body
         cell.messageSenderLabel.text = message.name
         cell.messageCountLike.text = "\(message.likeNum)"
         cell.backgroundImageView.kf.setImage(with: url)
-
+        
         
         
         return cell
@@ -219,13 +219,13 @@ extension MainViewController: SwipeTableViewCellDelegate{
             thumbsUpAction.title = "공유하기"
             thumbsUpAction.image = UIImage(systemName: "square.and.arrow.up")
             thumbsUpAction.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
-        
+            
             let thumbsUpAction2 = SwipeAction(style: .destructive, title: nil, handler: {
                 action, indexPath in
                 
-//                print(self.messages[indexPath.row])
-              
-               
+                //                print(self.messages[indexPath.row])
+                
+                
                 guard  MFMailComposeViewController.canSendMail() else {
                     self.view.makeToast("연결된 mail이 없습니다 아이폰 기본 mail 어플을 확인해주세요")
                     return
@@ -238,7 +238,7 @@ extension MainViewController: SwipeTableViewCellDelegate{
                         let doc = querySnapshot!.documents.first
                         //doc?.reference.delete()
                         if let currentblock = doc?.data()["block"]{
-                                doc?.reference.updateData(["block": currentblock as! Int + 1])
+                            doc?.reference.updateData(["block": currentblock as! Int + 1])
                             let composer = MFMailComposeViewController()
                             composer.mailComposeDelegate = self
                             composer.setToRecipients(["dev.geeyong@gmail.com"])
@@ -247,14 +247,14 @@ extension MainViewController: SwipeTableViewCellDelegate{
                             UserDefaults.standard.set(self.messages[indexPath.row].sender, forKey: "email")
                             self.block = self.messages[indexPath.row].sender
                             self.present(composer, animated: true)
-                           self.messages.remove(at: indexPath.row)
+                            self.messages.remove(at: indexPath.row)
                             tableView.reloadData()
                         }
                         
                     }
-                
-                
-               
+                    
+                    
+                    
                 }
                 
             })
@@ -271,15 +271,15 @@ extension MainViewController: SwipeTableViewCellDelegate{
             let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
                 
-      
+                
                 let updateedStatus = !dataItem.isFavorite
                 dataItem.isFavorite = updateedStatus
                 let body = self.messages[indexPath.row].body
                 cell.hideSwipe(animated: true)
-                               DispatchQueue.main.asyncAfter(deadline: .now() + 0.6, execute: {
-                                   // 현재 스와이프 한 애만 리로드 하기
-                                   tableView.reloadRows(at: [indexPath], with: .none)
-                               })
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6, execute: {
+                    // 현재 스와이프 한 애만 리로드 하기
+                    tableView.reloadRows(at: [indexPath], with: .none)
+                })
                 
                 self.db.collection("users").whereField("mesagee", isEqualTo: body).getDocuments(){(querySnapshot, err) in
                     if let err = err {
@@ -316,20 +316,20 @@ extension MainViewController: SwipeTableViewCellDelegate{
             })
             
             
-//            if message.TF == false{
+            //            if message.TF == false{
             
             thumbsUpAction.title = dataItem.isFavorite ? "좋아요 취소" : "좋아요"
             thumbsUpAction.image =  UIImage(systemName:dataItem.isFavorite ? "hand.thumbsdown.fill" : "hand.thumbsup.fill")
             thumbsUpAction.backgroundColor = dataItem.isFavorite ?  #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1) : #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-                
-                
-                
-//            }else{
-//                thumbsUpAction.title = "좋아요 취소"
-//                thumbsUpAction.image = UIImage(systemName: "hand.thumbsdown.fill")
-//                thumbsUpAction.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-//
-//            }
+            
+            
+            
+            //            }else{
+            //                thumbsUpAction.title = "좋아요 취소"
+            //                thumbsUpAction.image = UIImage(systemName: "hand.thumbsdown.fill")
+            //                thumbsUpAction.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            //
+            //            }
             //MARK: - 저장하기 스와이프
             let saveAction2 = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
