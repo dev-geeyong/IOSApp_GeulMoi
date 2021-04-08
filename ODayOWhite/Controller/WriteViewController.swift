@@ -28,7 +28,7 @@ class WriteViewController: UIViewController {
     @IBOutlet var rightButton: UIButton!
     @IBOutlet var submitButton: UIButton!
     let db = Firestore.firestore()
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.isEnabled = false
@@ -59,7 +59,7 @@ class WriteViewController: UIViewController {
         
         
         if let inputMessaege = inputText.text{
-        
+            
             db.collection("users").addDocument(data: [
                 "email" : K.email,
                 "nickName" : K.nickName,
@@ -76,15 +76,14 @@ class WriteViewController: UIViewController {
                 }
             }
         }
-       // K.TF.insert(true, at: 0)
         K.TF = true
-       self.tabBarController?.selectedIndex = 0
+        self.tabBarController?.selectedIndex = 0
         
         
         
         
     }
-   
+    
     @IBAction func textfieldChanged(_ sender: TweeAttributedTextField) {
         if let userInput = sender.text {
             if userInput.count == 0{
@@ -105,31 +104,31 @@ class WriteViewController: UIViewController {
     //MARK: - 이미지 변경하기 (카메라, 라이브러리)
     @IBAction func changeImage(_ sender: UIButton) {
         
+        
+        var config = YPImagePickerConfiguration()
+        config.screens = [.photo , .library]
+        config.targetImageSize = YPImageSize.cappedTo(size: 400)
+        let picker = YPImagePicker(configuration: config)
+        
+        picker.didFinishPicking { [unowned picker] items, _ in
+            if let photo = items.singlePhoto {
+                print(photo.fromCamera) // Image source (camera or library)
+                print(photo.image) // Final image selected by the user
+                print(photo.originalImage) // original image selected by the user, unfiltered
+                print(photo.modifiedImage) // Transformed image, can be nil
+                print(photo.exifMeta) // Print exif meta data of original image.
                 
-                var config = YPImagePickerConfiguration()
-                config.screens = [.photo , .library]
-                config.targetImageSize = YPImageSize.cappedTo(size: 400)
-                let picker = YPImagePicker(configuration: config)
-        
-                picker.didFinishPicking { [unowned picker] items, _ in
-                    if let photo = items.singlePhoto {
-                        print(photo.fromCamera) // Image source (camera or library)
-                        print(photo.image) // Final image selected by the user
-                        print(photo.originalImage) // original image selected by the user, unfiltered
-                        print(photo.modifiedImage) // Transformed image, can be nil
-                        print(photo.exifMeta) // Print exif meta data of original image.
-        
-                        self.imageView.image = photo.image
-                        self.photoImage = photo.image
-                        self.imageView.layer.cornerRadius = 10
-                        self.imageView.clipsToBounds = true
-                        let colur = AverageColorFromImage(photo.image)
-                        self.inputText.textColor = ContrastColorOf(colur, returnFlat: true)
-                        self.senderNickName.textColor = ContrastColorOf(colur, returnFlat: true)
-                    }
-                    picker.dismiss(animated: true, completion: nil)
-                }
-                present(picker, animated: true, completion: nil)
+                self.imageView.image = photo.image
+                self.photoImage = photo.image
+                self.imageView.layer.cornerRadius = 10
+                self.imageView.clipsToBounds = true
+                let colur = AverageColorFromImage(photo.image)
+                self.inputText.textColor = ContrastColorOf(colur, returnFlat: true)
+                self.senderNickName.textColor = ContrastColorOf(colur, returnFlat: true)
+            }
+            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
     }
     //MARK: - 이미지 캡쳐 저장
     @IBAction func imagePicker(_ sender: UIButton){
@@ -141,7 +140,7 @@ class WriteViewController: UIViewController {
         
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
-
+        
     }
     
 }
@@ -177,8 +176,8 @@ extension WriteViewController: UITextFieldDelegate{
         else{
             submitButton.isEnabled = false
         }
-     
-
+        
+        
         return true
     }
     
@@ -212,21 +211,13 @@ extension WriteViewController: UITextFieldDelegate{
         }else{
             submitButton.isEnabled = false
         }
-    
-    
+        
+        
         
     }
 }
 extension UIView {
-
-    /// Create image snapshot of view.
-    ///
-    /// - Parameters:
-    ///   - rect: The coordinates (in the view's own coordinate space) to be captured. If omitted, the entire `bounds` will be captured.
-    ///   - afterScreenUpdates: A Boolean value that indicates whether the snapshot should be rendered after recent changes have been incorporated. Specify the value false if you want to render a snapshot in the view hierarchy’s current state, which might not include recent changes. Defaults to `true`.
-    ///
-    /// - Returns: The `UIImage` snapshot.
-
+    
     func snapshot(of rect: CGRect? = nil, afterScreenUpdates: Bool = true) -> UIImage {
         return UIGraphicsImageRenderer(bounds: rect ?? bounds).image { _ in
             drawHierarchy(in: bounds, afterScreenUpdates: afterScreenUpdates)

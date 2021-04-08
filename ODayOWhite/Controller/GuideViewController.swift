@@ -9,7 +9,7 @@ import UIKit
 import ImageSlideshow
 
 class GuideViewController: UIViewController {
-
+    
     @IBOutlet weak var allowBluetooth: UIButton!
     @IBOutlet weak var onboardingView: ImageSlideshow!
     @IBOutlet var hideView: UIView!
@@ -30,7 +30,7 @@ class GuideViewController: UIViewController {
         onboardingView.delegate = self
         onboardingView.setImageInputs(imageResources)
         onboardingView.pageIndicatorPosition = .init(horizontal: .center, vertical: .top)
-            
+        
         onboardingView.contentScaleMode = .scaleAspectFit
         print(onboardingView.slideshowItems.count)
     }

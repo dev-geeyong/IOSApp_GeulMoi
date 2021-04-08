@@ -10,7 +10,7 @@ import Firebase
 import MessageUI
 import SafariServices
 class PersonalInfoViewController: UIViewController  {
-
+    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var curruntEmail: UILabel!
     @IBOutlet var curruntNickname: UILabel!
@@ -33,29 +33,29 @@ class PersonalInfoViewController: UIViewController  {
             curruntEmail.text = currentEmail
             
             DispatchQueue.main.async {
-            if let currentEmail = Auth.auth().currentUser?.email{
-                self.db.collection("usersData")
-                    .whereField("email", isEqualTo: currentEmail)
-                    .getDocuments(){(querySnapshot, err) in
-                    if let err = err {
-                        print(err)
-                    }else{
-                        
-                        if let doc = querySnapshot!.documents.first{
-                            let data = doc.data()
-                            self.curruntNickname.text = data["nickname"] as! String
-     
-                        }else{
-             
+                if let currentEmail = Auth.auth().currentUser?.email{
+                    self.db.collection("usersData")
+                        .whereField("email", isEqualTo: currentEmail)
+                        .getDocuments(){(querySnapshot, err) in
+                            if let err = err {
+                                print(err)
+                            }else{
+                                
+                                if let doc = querySnapshot!.documents.first{
+                                    let data = doc.data()
+                                    self.curruntNickname.text = data["nickname"] as! String
+                                    
+                                }else{
+                                    
+                                }
+                                
+                            }
                         }
- 
-                    }
                 }
-            }
                 
                 
             }
-                    
+            
         }
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -64,22 +64,22 @@ class PersonalInfoViewController: UIViewController  {
         navigationController?.navigationBar.shadowImage = UIImage() //remove pesky 1 pixel line
         
         super.viewDidLoad()
-
+        
     }
-
-
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         //getMessageData()
         //tableView.reloadData()
-       // print("will")
+        // print("will")
     }
     override func viewDidAppear(_ animated: Bool) {
         
         //getMessageData()
         //tableView.reloadData()
         //loadItem()
-       
-      
+        
+        
     }
     
     @IBAction func contactButtonAction(_ sender: UIButton) {
@@ -98,38 +98,38 @@ class PersonalInfoViewController: UIViewController  {
         composer.setMessageBody("", isHTML: false)
         
         present(composer, animated: true)
-    
+        
     }
-
+    
     @IBAction func touchUpLogoutButton(_ sender: UIButton) {
         
         let auth = Auth.auth()
-            sender.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-
-            UIView.animate(withDuration: 2.0,
-                                       delay: 0,
-                                       usingSpringWithDamping: CGFloat(0.20),
-                                       initialSpringVelocity: CGFloat(6.0),
-                                       options: UIView.AnimationOptions.allowUserInteraction,
-                                       animations: {
-                                        sender.transform = CGAffineTransform.identity
-                },
-                                       completion: { Void in()  }
-            )
+        sender.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        
+        UIView.animate(withDuration: 2.0,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.20),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIView.AnimationOptions.allowUserInteraction,
+                       animations: {
+                        sender.transform = CGAffineTransform.identity
+                       },
+                       completion: { Void in()  }
+        )
         do {
             
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-            UserDefaults.standard.removeObject(forKey: "id")
-
+        UserDefaults.standard.removeObject(forKey: "id")
+        
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-//            self.performSegue(withIdentifier: "goToLogin", sender: self)
-        }
+        //            self.performSegue(withIdentifier: "goToLogin", sender: self)
+    }
     
-
-
+    
+    
 }
 extension PersonalInfoViewController: MFMailComposeViewControllerDelegate{
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

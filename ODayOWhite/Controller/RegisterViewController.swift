@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.keyboardType = .URL
-      
+        
     }
     @IBAction func passwordEditingChanged(_ sender: TweeAttributedTextField) {
         if let userInput = sender.text {
@@ -46,28 +46,28 @@ class RegisterViewController: UIViewController {
     
     @IBAction func myEmailWhileEditing(_ sender: TweeAttributedTextField) {
         
-              if let userInput = sender.text {
-                  
-                  if userInput.count == 0 {
-                      sender.activeLineColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-                      sender.hideInfo(animated: true)
-                      return
-                  }
-                  
-                  if userInput.isValidEmail == true {
-                      sender.infoTextColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-                      sender.activeLineColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-                      sender.showInfo("이메일 형식 입니다!", animated: true)
-                  } else {
-                      sender.infoTextColor = .red
-                      sender.activeLineColor = .red
-                      
-                      sender.showInfo("이메일 형식이 아닙니다!", animated: true)
-                  }
-              }
-              
-          }
+        if let userInput = sender.text {
+            
+            if userInput.count == 0 {
+                sender.activeLineColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+                sender.hideInfo(animated: true)
+                return
+            }
+            
+            if userInput.isValidEmail == true {
+                sender.infoTextColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                sender.activeLineColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                sender.showInfo("이메일 형식 입니다!", animated: true)
+            } else {
+                sender.infoTextColor = .red
+                sender.activeLineColor = .red
+                
+                sender.showInfo("이메일 형식이 아닙니다!", animated: true)
+            }
+        }
         
+    }
+    
     
     @IBAction func registerPressed(_ sender: UIButton) {
         
@@ -81,7 +81,7 @@ class RegisterViewController: UIViewController {
                     print(e.localizedDescription)
                 }
                 else{
-
+                    
                     if let nickname = self.nickNameTextField.text {
                         K.email = email
                         K.nickName = nickname
@@ -106,7 +106,7 @@ class RegisterViewController: UIViewController {
         
     }
     
-
+    
 }
 extension UITextField {
     

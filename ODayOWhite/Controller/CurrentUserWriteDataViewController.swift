@@ -20,13 +20,13 @@ class CurrentUserWriteDataViewController: UIViewController {
         tableView.register(UINib(nibName: "LikeMessageTableViewCell", bundle: nil), forCellReuseIdentifier: "LikeMessageCell")
         tableView.dataSource = self
         tableView.delegate = self
-
         
-
+        
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         loadMessages()
-
+        
     }
     //MARK: - 화면이 사라질 때 이전화면으로 돌려놓기.
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,9 +59,9 @@ class CurrentUserWriteDataViewController: UIViewController {
         }
     }
     
-
-
-
+    
+    
+    
 }
 extension CurrentUserWriteDataViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -90,72 +90,72 @@ extension CurrentUserWriteDataViewController: UITableViewDataSource{
 }
 extension CurrentUserWriteDataViewController: SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-    
+        
         let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "LikeMessageCell", for: indexPath) as! LikeMessageTableViewCell
         
         switch orientation {
+        
+        case .right:
             
-            case .right:
-                
-                let deleteAction = SwipeAction(style: .default, title: nil, handler: {
-                    action, indexPath in
-                    DispatchQueue.main.async {
-                        if let currentEmail = Auth.auth().currentUser?.email{
-                            self.db.collection("users")
-                                .whereField("email", isEqualTo: currentEmail)
-                                .addSnapshotListener(){(querySnapshot, err) in
+            let deleteAction = SwipeAction(style: .default, title: nil, handler: {
+                action, indexPath in
+                DispatchQueue.main.async {
+                    if let currentEmail = Auth.auth().currentUser?.email{
+                        self.db.collection("users")
+                            .whereField("email", isEqualTo: currentEmail)
+                            .addSnapshotListener(){(querySnapshot, err) in
                                 if let err = err {
                                     print(err)
                                 }else{
-                                   
+                                    
                                     if let snapshotDocuments = querySnapshot?.documents{
                                         for doc in snapshotDocuments{
                                             let data = doc.data()
                                             if (data["mesagee"] as! String == message.body){
                                                 doc.reference.delete()
                                                 self.view.makeToast("삭제완료")
-                                               
+                                                
                                                 
                                             }
                                         }
-                   
-                    
+                                        
+                                        
                                         
                                         
                                         DispatchQueue.main.async() {
-                                         
-//
+                                            
+                                            //
                                             self.navigationController?.popViewController(animated: true)
                                             
                                         }
-                                            
-                                       
+                                        
+                                        
                                     }else{
                                         self.view.makeToast("fail")
                                         
                                     }
- 
+                                    
                                     
                                 }
                             }
-                        }
                     }
-                })
+                }
+            })
             
-                deleteAction.title = "삭제하기"
-                deleteAction.image = UIImage(systemName: "trash.fill")
-                deleteAction.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-                
-                return [deleteAction]
-  
-  
+            deleteAction.title = "삭제하기"
+            deleteAction.image = UIImage(systemName: "trash.fill")
+            deleteAction.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            
+            return [deleteAction]
+            
+            
         case .left:
             let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
-
-
-
+                
+                
+                
                 let activityVC = UIActivityViewController(activityItems: [message.body], applicationActivities: nil)
                 activityVC.popoverPresentationController?.sourceView = self.view
                 self.present(activityVC, animated: true, completion: nil)

@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().barTintColor = .white
         
+        Thread.sleep(forTimeInterval: 2.0)
+        
         
         return true
     }

@@ -12,9 +12,9 @@ import SwipeCellKit
 class ShowSaveDataViewController: UIViewController {
     let db = Firestore.firestore()
     var ary:Array<String>? = []
-
+    
     @IBOutlet var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,58 +23,58 @@ class ShowSaveDataViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: "LikeMessageTableViewCell", bundle: nil), forCellReuseIdentifier: "LikeMessageCell")
         getMessageData()
-    
-    
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         getMessageData()
-
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         
         getMessageData()
-     
-      
+        
+        
     }
     func loadMessages(){
         DispatchQueue.main.async {
             if self.ary != nil{
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                let indexPath = IndexPath(row: 0, section: 0)
+                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }else{
                 print("loadMessage error")
             }}
     }
-
+    
     func getMessageData(){
         DispatchQueue.main.async {
-        if let currentEmail = Auth.auth().currentUser?.email{
-            self.db.collection("usersData")
-                .whereField("email", isEqualTo: currentEmail)
-                .getDocuments(){(querySnapshot, err) in
-                if let err = err {
-                    print(err)
-                }else{
-                    
-                    if let doc = querySnapshot!.documents.first{
-                        let data = doc.data()
-                        self.ary = data["likemessages"] as? Array<String>
-                        
-                      
-                
-                    }else{
-         
+            if let currentEmail = Auth.auth().currentUser?.email{
+                self.db.collection("usersData")
+                    .whereField("email", isEqualTo: currentEmail)
+                    .getDocuments(){(querySnapshot, err) in
+                        if let err = err {
+                            print(err)
+                        }else{
+                            
+                            if let doc = querySnapshot!.documents.first{
+                                let data = doc.data()
+                                self.ary = data["likemessages"] as? Array<String>
+                                
+                                
+                                
+                            }else{
+                                
+                            }
+                            
+                        }
                     }
-
-                }
             }
-        }
             self.tableView.reloadData()
             
         }
     }
-
-
+    
+    
 }
 extension ShowSaveDataViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -92,7 +92,7 @@ extension ShowSaveDataViewController: UITableViewDataSource{
         cell.delegate = self
         if ary != nil {
             cell.likeMessage.text = ary![indexPath.row]
-  
+            
         }
         return cell
     }
@@ -106,30 +106,30 @@ extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "LikeMessageCell", for: indexPath) as! LikeMessageTableViewCell
         
         switch orientation {
+        
+        case .right:
             
-            case .right:
-                
-                let deleteAction = SwipeAction(style: .default, title: nil, handler: {
-                    action, indexPath in
-                    DispatchQueue.main.async {
-                        if let currentEmail = Auth.auth().currentUser?.email{
-                            self.db.collection("usersData")
-                                .whereField("email", isEqualTo: currentEmail)
-                                .getDocuments(){(querySnapshot, err) in
+            let deleteAction = SwipeAction(style: .default, title: nil, handler: {
+                action, indexPath in
+                DispatchQueue.main.async {
+                    if let currentEmail = Auth.auth().currentUser?.email{
+                        self.db.collection("usersData")
+                            .whereField("email", isEqualTo: currentEmail)
+                            .getDocuments(){(querySnapshot, err) in
                                 if let err = err {
                                     print(err)
                                 }else{
                                     
                                     if let doc = querySnapshot!.documents.first{
-                   
+                                        
                                         doc.reference.updateData(["likemessages":FieldValue.arrayRemove([self.ary![indexPath.row]])])
                                         
                                         self.view.makeToast("삭제완료")
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                                             self.navigationController?.popViewController(animated: true)
                                         }
-                                            
-                                       
+                                        
+                                        
                                     }else{
                                         self.view.makeToast("fail")
                                         
@@ -137,23 +137,23 @@ extension ShowSaveDataViewController: SwipeTableViewCellDelegate{
                                     
                                 }
                             }
-                        }
                     }
-                })
+                }
+            })
             
-                deleteAction.title = "삭제하기"
-                deleteAction.image = UIImage(systemName: "trash.fill")
-                deleteAction.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-                
-                return [deleteAction]
-  
-  
+            deleteAction.title = "삭제하기"
+            deleteAction.image = UIImage(systemName: "trash.fill")
+            deleteAction.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            
+            return [deleteAction]
+            
+            
         case .left:
             let thumbsUpAction = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in
-
-
-
+                
+                
+                
                 let activityVC = UIActivityViewController(activityItems: [self.ary![indexPath.row]], applicationActivities: nil)
                 activityVC.popoverPresentationController?.sourceView = self.view
                 self.present(activityVC, animated: true, completion: nil)

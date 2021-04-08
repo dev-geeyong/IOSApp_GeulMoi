@@ -300,6 +300,7 @@ PODS:
   - ImageSlideshow (1.9.2):
     - ImageSlideshow/Core (= 1.9.2)
   - ImageSlideshow/Core (1.9.2)
+  - JGProgressHUD (2.2)
   - Kingfisher (6.0.1)
   - leveldb-library (1.22)
   - nanopb (2.30907.0):
@@ -315,7 +316,6 @@ PODS:
   - SwipeCellKit (2.7.1)
   - Toast-Swift (5.0.1)
   - TweeTextField (1.6.3)
-  - ViewAnimator (3.0.2)
   - YPImagePicker (4.4.0):
     - PryntTrimmerView (~> 4.0.2)
     - SteviaLayout (~> 4.7.3)
@@ -325,13 +325,13 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - ImageSlideshow (~> 1.9.0)
+  - JGProgressHUD
   - Kingfisher (~> 6.0)
   - SkeletonView
   - SwipeableTabBarController
   - SwipeCellKit
   - Toast-Swift (~> 5.0.1)
   - TweeTextField
-  - ViewAnimator
   - YPImagePicker
 
 SPEC REPOS:
@@ -349,6 +349,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - ImageSlideshow
+    - JGProgressHUD
     - Kingfisher
     - leveldb-library
     - nanopb
@@ -360,7 +361,6 @@ SPEC REPOS:
     - SwipeCellKit
     - Toast-Swift
     - TweeTextField
-    - ViewAnimator
     - YPImagePicker
 
 EXTERNAL SOURCES:
@@ -388,6 +388,7 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Kingfisher: adde87a4f74f6a3845395769354efff593581740
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
@@ -399,9 +400,8 @@ SPEC CHECKSUMS:
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   TweeTextField: 47bf8e7f0433364a7f7e119c45e7f278ea50eb62
-  ViewAnimator: 16435576cd44fca0b0d63147d5031fd3e91d295a
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: a3e80be9be632eb1fde4cfe8a5a61e00e974e335
+PODFILE CHECKSUM: 865193c3a84b9d52ef2367236896343d65f74939
 
 COCOAPODS: 1.10.0

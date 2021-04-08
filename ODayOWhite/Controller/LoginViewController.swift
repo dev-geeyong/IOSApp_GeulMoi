@@ -11,7 +11,7 @@ import TweeTextField
 
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet var idTextField: UITextField!
     
     @IBOutlet var mainImage: UIImageView!
@@ -28,11 +28,11 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         print("첫화면 viewDidAppear")
         if let userID = UserDefaults.standard.string(forKey: "id"){
-           
+            
             self.performSegue(withIdentifier: "LoginToMain", sender: self)
         }
-       
-      
+        
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
             present(vc, animated: true)
         }
     }
-
+    
     @IBAction func pressLoginButton(_ sender: UIButton) {
         if let email = idTextField.text , let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in

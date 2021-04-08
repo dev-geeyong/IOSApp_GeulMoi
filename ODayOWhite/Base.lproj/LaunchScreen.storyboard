@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,11 +27,21 @@
                                             <constraint firstAttribute="width" constant="300" id="fWc-uD-nJQ"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*모든 글은 옆으로 밀어서 좋아요 / 저장 / 신고 / 공유가 가능합니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5B-zZ-pXL">
+                                        <rect key="frame" x="5" y="62" width="404" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="g5B-zZ-pXL" firstAttribute="top" secondItem="CUj-wf-1zb" secondAttribute="top" constant="62" id="DG4-bu-W23"/>
+                                    <constraint firstItem="g5B-zZ-pXL" firstAttribute="centerX" secondItem="CUj-wf-1zb" secondAttribute="centerX" id="FMv-YF-pCc"/>
                                     <constraint firstItem="C9y-WV-cEK" firstAttribute="centerX" secondItem="CUj-wf-1zb" secondAttribute="centerX" id="ceb-8b-2BJ"/>
                                     <constraint firstItem="C9y-WV-cEK" firstAttribute="centerY" secondItem="CUj-wf-1zb" secondAttribute="centerY" id="iAb-Mk-Qvx"/>
+                                    <constraint firstAttribute="trailing" secondItem="g5B-zZ-pXL" secondAttribute="trailing" constant="5" id="rVD-Cu-5aA"/>
+                                    <constraint firstItem="g5B-zZ-pXL" firstAttribute="leading" secondItem="CUj-wf-1zb" secondAttribute="leading" constant="5" id="vG3-JP-1Of"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -6,12 +6,11 @@
 //
 
 import UIKit
-//import SwipeableTabBarController
 import Firebase
 import SwipeCellKit
 import Toast_Swift
 import Kingfisher
-import ViewAnimator
+
 import MessageUI
 
 
@@ -26,7 +25,7 @@ class MainViewController: UIViewController {
     
     
     var commonImageURL = ""
-    
+    var count = 0
     
     var url: URL?
     
@@ -45,6 +44,7 @@ class MainViewController: UIViewController {
             block = blockEmail
         }
         print("메인페이지 viewDidLoad")
+        showLoader(true)
         self.loadBestMessage()
         self.loadMessages()
         
@@ -58,18 +58,10 @@ class MainViewController: UIViewController {
         tableView.rowHeight = 200
         tableView.reloadData()
         
-        
-        
     }
-    override func viewDidAppear(_ animated: Bool) {
-        
-        self.loadMessages()
-        
-        
-        
-        
-    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
     }
     func loadBestMessage(){
@@ -85,23 +77,7 @@ class MainViewController: UIViewController {
                             self.bestMessage.text = data["message"] as? String
                             self.bestNickname.text = data["nickname"] as? String
                             self.bestLike.text = data["like"] as? String
-                            
-                            let url = URL(string: data["imageURL"] as! String)
-                            
-                            let urlData = try? Data(contentsOf: url!)
-                            if urlData != nil{
-                                self.bestImageView.image = UIImage(data: urlData!)
-                                
-                            }else{
-                                self.bestImageView.image = UIImage(named: "39")
-                            }
-                            
-                            self.url = URL(string: data["commonImage"] as! String)
-                            let testUrl = try? Data(contentsOf: self.url!)
-                            if testUrl == nil{
-                                self.url = URL(string: "http://drive.google.com/uc?export=view&id=1lN6TfLHtLOQ5yY2BG3B7gnRw4E6vFiS9")
-                            }
-                            
+                            self.bestImageView.image = UIImage(named: "22")
                             
                         }
                     }
@@ -119,45 +95,55 @@ class MainViewController: UIViewController {
                 if let e = error{
                     print(e,"loadMessages error")
                 }else{
-                    if let snapshotDocuments = querySnapshot?.documents{
-                        for doc in snapshotDocuments{
-                            let data = doc.data()
-                            
-                            if let messageSender = data["nickName"] as? String, let messageBody = data["mesagee"] as? String, let messageEmail = data["email"] as? String, let likeNum = data["likeNum"] as? Int, let blockcount = data["block"] as? Int{
-                                if  blockcount >= 3{
-                                    doc.reference.delete()
-                                }
-                                if data["email"] as! String != self.block{
-                                    
-                                    let newMessage = Message(sender: messageEmail, body: messageBody, name: messageSender, likeNum: likeNum)
-                                    self.messages.append(newMessage)
-                                    let test = Feed(likeNum: likeNum, isFavorite: false)
-                                    let test2 = Feed(likeNum: 18, isFavorite: false)
-                                    if (K.TF == true){
-                                        self.testArray.insert(test2, at: 0)
-                                        K.TF = false
+                    
+                    DispatchQueue.global().async {
+                        if let snapshotDocuments = querySnapshot?.documents{
+                            for doc in snapshotDocuments{
+                                //                                self.count += 1
+                                //                                if self.count == 5{
+                                //                                    break
+                                //                                }
+                                let data = doc.data()
+                                
+                                if let messageSender = data["nickName"] as? String, let messageBody = data["mesagee"] as? String, let messageEmail = data["email"] as? String, let likeNum = data["likeNum"] as? Int, let blockcount = data["block"] as? Int{
+                                    if  blockcount >= 3{
+                                        doc.reference.delete()
+                                    }
+                                    if data["email"] as! String != self.block{
+                                        
+                                        let newMessage = Message(sender: messageEmail, body: messageBody, name: messageSender, likeNum: likeNum)
+                                        self.messages.append(newMessage)
+                                        let test = Feed(likeNum: likeNum, isFavorite: false)
+                                        let test2 = Feed(likeNum: 18, isFavorite: false)
+                                        if (K.TF == true){
+                                            self.testArray.insert(test2, at: 0)
+                                            K.TF = false
+                                        }
+                                        
+                                        self.testArray.append(test)
                                     }
                                     
-                                    self.testArray.append(test)
+                                    
+                                    DispatchQueue.main.async {
+                                        self.tableView.reloadData()
+                                        
+                                        let indexPath = IndexPath(row: 0, section: 0)
+                                        
+                                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                                        
+                                    }
+                                    
+                                    
+                                    
                                 }
-                                
-                                
-                                DispatchQueue.main.async {
-                                    self.tableView.reloadData()
-                                    
-                                    let indexPath = IndexPath(row: 0, section: 0)
-                                    
-                                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                                    
-                                }
-                                
-                                
-                                
                             }
                         }
                     }
+                    self.showLoader(false)
+                    
                 }
             }
+        
     }
 }
 extension MainViewController: UITableViewDataSource {
@@ -179,8 +165,6 @@ extension MainViewController: UITableViewDataSource {
         cell.messageTextLabel.text = message.body
         cell.messageSenderLabel.text = message.name
         cell.messageCountLike.text = "\(message.likeNum)"
-        cell.backgroundImageView.kf.setImage(with: url)
-        
         
         
         return cell
@@ -316,20 +300,10 @@ extension MainViewController: SwipeTableViewCellDelegate{
             })
             
             
-            //            if message.TF == false{
-            
             thumbsUpAction.title = dataItem.isFavorite ? "좋아요 취소" : "좋아요"
             thumbsUpAction.image =  UIImage(systemName:dataItem.isFavorite ? "hand.thumbsdown.fill" : "hand.thumbsup.fill")
             thumbsUpAction.backgroundColor = dataItem.isFavorite ?  #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1) : #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-            
-            
-            
-            //            }else{
-            //                thumbsUpAction.title = "좋아요 취소"
-            //                thumbsUpAction.image = UIImage(systemName: "hand.thumbsdown.fill")
-            //                thumbsUpAction.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-            //
-            //            }
+
             //MARK: - 저장하기 스와이프
             let saveAction2 = SwipeAction(style: .default, title: nil, handler: {
                 action, indexPath in

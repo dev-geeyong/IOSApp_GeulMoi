@@ -11,7 +11,7 @@ pod 'Firebase/Auth'
 pod 'SwipeableTabBarController'
 #pod 'RealmSwift'
 pod 'SwipeCellKit'
-#pod 'ViewAnimator'
+pod 'JGProgressHUD'
 pod 'YPImagePicker'
 
 pod 'TweeTextField'
