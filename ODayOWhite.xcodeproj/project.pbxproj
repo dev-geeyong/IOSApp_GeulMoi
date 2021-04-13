@@ -11,7 +11,6 @@
 		460408A525AD7E5D007C618C /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 460408A325AD7E5D007C618C /* MessageCell.xib */; };
 		460408A925AD7FB0007C618C /* MapoGoldenPier.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 460408A825AD7FB0007C618C /* MapoGoldenPier.ttf */; };
 		460B69F225B58440008EEE77 /* ShowSaveDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */; };
-		464EB29725BED1F10085F43E /* filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464EB29625BED1F10085F43E /* filter.swift */; };
 		466ACF7D25B66E62007975BE /* CurrentUserWriteDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466ACF7C25B66E62007975BE /* CurrentUserWriteDataViewController.swift */; };
 		466ACF8025B6767F007975BE /* CurrentUserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466ACF7F25B6767F007975BE /* CurrentUserMessage.swift */; };
 		469AEE9525AD9812006A446D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469AEE9425AD9812006A446D /* LoginViewController.swift */; };
@@ -47,7 +46,6 @@
 		460408A325AD7E5D007C618C /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		460408A825AD7FB0007C618C /* MapoGoldenPier.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MapoGoldenPier.ttf; sourceTree = "<group>"; };
 		460B69F125B58440008EEE77 /* ShowSaveDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSaveDataViewController.swift; sourceTree = "<group>"; };
-		464EB29625BED1F10085F43E /* filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filter.swift; sourceTree = "<group>"; };
 		466ACF5F25B66A7D007975BE /* ODayOWhite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ODayOWhite.entitlements; sourceTree = "<group>"; };
 		466ACF7C25B66E62007975BE /* CurrentUserWriteDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserWriteDataViewController.swift; sourceTree = "<group>"; };
 		466ACF7F25B6767F007975BE /* CurrentUserMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserMessage.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				466ACF7F25B6767F007975BE /* CurrentUserMessage.swift */,
 				46AB71DB25AEEB5F00281C32 /* Const.swift */,
 				46F1B90625BD7BD200C0A849 /* Feed.swift */,
-				464EB29625BED1F10085F43E /* filter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,7 +333,6 @@
 				46A1139E25AD77E3001BAC80 /* ViewController.swift in Sources */,
 				469AEEAF25ADC4B9006A446D /* RegisterViewController.swift in Sources */,
 				46B9ED9B25AE8F9F0024E6D4 /* TabBarController.swift in Sources */,
-				464EB29725BED1F10085F43E /* filter.swift in Sources */,
 				46F0E385261F3CED00269C67 /* Extensions.swift in Sources */,
 				460408A425AD7E5D007C618C /* MessageCell.swift in Sources */,
 				46AB71DC25AEEB5F00281C32 /* Const.swift in Sources */,

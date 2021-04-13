@@ -159,9 +159,6 @@ extension MainViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! MessageCell
         cell.delegate = self
-        //        if self.testArray.count > 0 {
-        //            cell.messageTextLabel.text = testArray[indexPath.row].content
-        //        }
         cell.messageTextLabel.text = message.body
         cell.messageSenderLabel.text = message.name
         cell.messageCountLike.text = "\(message.likeNum)"
@@ -207,8 +204,6 @@ extension MainViewController: SwipeTableViewCellDelegate{
             let thumbsUpAction2 = SwipeAction(style: .destructive, title: nil, handler: {
                 action, indexPath in
                 
-                //                print(self.messages[indexPath.row])
-                
                 
                 guard  MFMailComposeViewController.canSendMail() else {
                     self.view.makeToast("연결된 mail이 없습니다 아이폰 기본 mail 어플을 확인해주세요")
@@ -220,7 +215,6 @@ extension MainViewController: SwipeTableViewCellDelegate{
                     }else{
                         
                         let doc = querySnapshot!.documents.first
-                        //doc?.reference.delete()
                         if let currentblock = doc?.data()["block"]{
                             doc?.reference.updateData(["block": currentblock as! Int + 1])
                             let composer = MFMailComposeViewController()
@@ -282,7 +276,6 @@ extension MainViewController: SwipeTableViewCellDelegate{
                                     
                                 ])
                                 self.view.makeToast("좋아요")
-                                //tableView.reloadRows(at: [indexPath], with: .fade)
                             }else{
                                 
                                 doc?.reference.updateData([
@@ -291,7 +284,6 @@ extension MainViewController: SwipeTableViewCellDelegate{
                                     
                                 ])
                                 self.view.makeToast("좋아요 취소")
-                                //tableView.reloadRows(at: [indexPath], with: .fade)
                             }
                         }
                         

@@ -103,7 +103,6 @@ class PersonalInfoViewController: UIViewController  {
     
     @IBAction func touchUpLogoutButton(_ sender: UIButton) {
         
-        let auth = Auth.auth()
         sender.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
         
         UIView.animate(withDuration: 2.0,
